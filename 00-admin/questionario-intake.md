@@ -1,204 +1,193 @@
-# Questionário Mestre de Intake — Helena's Gastrobar
+# Questionário Mestre de Intake — Eduardo Rolim (marca própria)
 
 Preencha direto abaixo de cada pergunta (ou responda em áudio/texto solto e mande pra IA distribuir). Não precisa responder tudo de uma vez — pode ir por seção.
+
+Legenda:
+- ✅ = já respondido, puxado de documento existente (fonte indicada)
+- ❓ = falta responder
+
+**Fontes usadas (só as que você enviou):**
+- **DOC1** = "Artefato - Eduardo Rolim" (brand bible)
+- **DOC2** = "Relatorio_Sofisticacao_Mercado_IA_Brasil" (pesquisa de mercado)
+- **DOC3** = "Manifesto pessoal – Eduardo Rolim" (virou também [04-marca/manifesto.md](../04-marca/manifesto.md) na íntegra)
 
 ---
 
 ## 00-admin
 
 ### resumo-executivo.md
-- Qual o objetivo geral desse projeto/contrato com o cliente?
-- Qual problema principal ele quer resolver?
-- Prazo geral esperado?
+- ❓ Qual o objetivo geral desse projeto (ex: estruturar a marca própria, lançar produto/SaaS, organizar operação de conteúdo)?
+- ❓ Qual problema principal quer resolver com essa organização de arquivos?
+- ❓ Prazo geral esperado?
 
 ### escopo-contratado.md
-- O que foi contratado exatamente (serviços, entregáveis)?
-- O que NÃO está incluso (fora de escopo)?
-- Qual o valor e forma de pagamento?
-- Qual a duração do contrato/renovação?
+- ❓ Não se aplica (é você mesmo) — ou existe algum contrato com equipe/freelancer/agência que precise registrar aqui?
+- ❓ O que cada pessoa do time entrega e por quanto?
 
 ### contatos.md
-- Nome, cargo e contato (whatsapp/email) de quem decide?
-- Quem é o ponto focal do dia a dia?
-- Outros fornecedores/agências envolvidos (site, contador, etc)?
+- ❓ Quem decide o quê hoje? Cargo/função de cada um do time.
+- ❓ Ponto focal do dia a dia de cada frente (conteúdo, tráfego, produto)?
+- ❓ Fornecedores externos (contador, dev, etc)?
 
 ### aprovacoes.md
-- Quem aprova peças/campanhas antes de publicar?
-- Prazo de aprovação (quantos dias úteis)?
-- Canal de aprovação (whatsapp, email, drive)?
+- ❓ Quem aprova peças/campanhas antes de publicar?
+- ❓ Prazo de aprovação?
+- ❓ Canal de aprovação (WhatsApp, Drive)?
 
 ### acessos.md
-- Login/acesso: Meta Business, Google Ads, Instagram, WhatsApp Business, site/hospedagem, Google Analytics?
-- Quem fornece esses acessos e quando?
+- ❓ Acessos: Meta Business, Google Ads, Instagram, WhatsApp Business, YouTube, site/hospedagem, Google Analytics — login/quem tem acesso hoje?
 
 ---
 
 ## 01-empresa
 
-### sobre-a-empresa.md
-- Nome oficial, CNPJ, endereço(s)?
-- Ano de fundação?
-- O que é o Helena's Gastrobar em uma frase?
+### sobre-a-empresa.md — ✅ RESPONDIDO
+- Marca: Eduardo Rolim. Empresa por trás da entrega: **Primoria** (ecossistema marketing + IA), CNPJ oficial.
+- Instagram: [@oeduardo.1](https://www.instagram.com/oeduardo.1/). YouTube: [@edurolim](https://www.youtube.com/@edurolim/videos).
 
-### historia.md
-- Como surgiu o negócio? Alguma história de origem que vale contar em marketing?
-- Marcos importantes (mudanças, expansão, prêmios)?
+### historia.md — ✅ RESPONDIDO
+- Ver [historia.md](../01-empresa/historia.md): página de humor no Facebook aos 16 (650k), dropshipping 2018/19 (primeira venda: pulseira anti-mosquito), PLX Digital/Pablo Marçal (gestor de tráfego, R$20M+ em ads, 9 meses), agência própria (30 clientes simultâneos), virada pra IA em 2022, hoje opera a Primoria.
 
-### unidades.md
-- Quantas unidades/endereços? Endereço completo, horário de funcionamento de cada uma?
-- Alguma unidade nova prevista?
+### unidades.md — ✅ RESPONDIDO
+- Só remoto, sem base física.
 
-### equipe.md
-- Quem são os sócios/gestores?
-- Tem chef, sommelier, gerente com destaque próprio (pode virar conteúdo)?
-- Tamanho do time (cozinha, salão, marketing)?
+### equipe.md — ✅ RESPONDIDO
+- Eduardo, Bruno Magalhães, Thiago. Por enquanto sem mais ninguém.
 
-### diferenciais.md
-- Por que escolher o Helena's e não o concorrente do lado?
-- 3 a 5 diferenciais reais (não genéricos tipo "qualidade")?
+### diferenciais.md — ✅ RESPONDIDO
+- ✅ **(DOC1)** Não ensina ferramenta, liga tecnologia a resultado de negócio.
+- ✅ **(respondido)** Case: expert de 12→40k seguidores em 90 dias com IA. R$20M+ em ads gerenciados. Sistemas próprios com IA rodando. Certificado Anthropic for Small Business. Especialista em funis de geração de leads.
 
 ---
 
 ## 02-produtos-servicos
 
-### visao-geral.md
-- Resumo do cardápio/conceito gastronômico?
-- É restaurante, bar, gastrobar, casa de eventos? Que ocasiões atende (jantar, happy hour, evento privado)?
+### visao-geral.md — ✅ RESPONDIDO
+- Duas frentes: **Primoria** (B2B, serviço + produto próprio "Primoria System") e **Edu Rolim pessoa física** (mentorias/cursos).
 
-### produtos.md
-- Pratos/drinks carro-chefe (com nome exato)?
-- Tem cardápio em PDF ou link pra anexar?
+### produtos.md — ✅ RESPONDIDO
+- Primoria System (SO de marketing+IA), Paperclip (curso/mentoria), cursos gravados em produção.
 
-### servicos.md
-- Além do cardápio: eventos, delivery, catering, música ao vivo?
+### servicos.md — ✅ RESPONDIDO
+- Lista completa em [servicos.md](../02-produtos-servicos/servicos.md), dividida Primoria x Edu Rolim. Venda personalizada, normalmente completa (LP+tráfego+conteúdo), mas pode ser separada.
 
-### precos.md
-- Faixa de preço médio (ticket médio)?
-- Tem algo tabu sobre falar de preço publicamente?
+### precos.md — ✅ RESPONDIDO
+- Não revela preço de serviço publicamente (proposta sempre personalizada). Mentoria: diagnóstico grátis, implementação R$350/h+ (não divulgar em conteúdo). Cursos futuros terão preço público.
 
-### ofertas-ativas.md
-- Promoções rodando agora (happy hour, dia da semana, combo)?
-- Validade de cada uma?
+### ofertas-ativas.md — ✅ RESPONDIDO
+- Tudo ativo, exceto cursos gravados (em produção).
 
-### promessas-validas.md
-- O que pode ser prometido em anúncio (ex: "melhor risoto da cidade") sem risco jurídico/reputação?
-- Algo que NUNCA deve ser prometido?
+### promessas-validas.md — ✅ RESPONDIDO
+- Regra: nunca prometer nada irreal ou mentiroso. Promessa central segue DOC1.
 
 ### faq-comercial.md
-- Perguntas mais frequentes de clientes (reserva, estacionamento, pet friendly, crianças)?
+- Ainda não existe FAQ — sem pendência de pergunta, só aguardando conteúdo acumular.
 
 ---
 
 ## 03-publico-mercado
 
-### icp.md
-- Quem é o cliente ideal (idade, renda, região, ocasião de consumo)?
+### icp.md — ✅ RESPONDIDO
+- Homens 30-55 anos. Dividido em 2 perfis de contratação: **Empresário** (contrata Primoria: tráfego, LP, conteúdo, implementação de IA) e **Empreendedor** (contrata IA avulsa ou mentorias/cursos com Edu Rolim pessoa física).
 
-### personas.md
-- 2-3 perfis de cliente recorrente (dar nome fictício e características)?
+### personas.md — ✅ RESPONDIDO
+- João (empresário, 30) e Maurício (empresário, 35) → clientes Primoria. Thiago (empreendedor, 30, aspirante/tech lover) → cliente de curso/mentoria. Ver [personas.md](../03-publico-mercado/personas.md).
 
-### dores.md
-- O que frustra o cliente antes de decidir onde comer/beber (indecisão, preço, fila, etc)?
+### dores.md — ✅ RESPONDIDO
+- Ver [dores.md](../03-publico-mercado/dores.md) (DOC1 + DOC2).
 
-### objecoes.md
-- Objeções comuns pra não visitar ou não fechar evento (preço, localização, "já fui e não gostei")?
+### objecoes.md — ✅ RESPONDIDO
+- Ver [objecoes.md](../03-publico-mercado/objecoes.md) (DOC2).
 
-### concorrentes.md
-- Quem são os 3-5 concorrentes diretos?
-- Pontos fortes e fracos de cada um?
+### concorrentes.md — ✅ RESPONDIDO
+- Diretos: @obrunookamoto, @brun0gpt, @thaleslaray. + 4 categorias de mercado (DOC2).
 
-### posicionamento.md
-- Em uma frase, como o Helena's quer ser visto no mercado vs concorrência?
+### posicionamento.md — ✅ RESPONDIDO
+- Marca pessoal e Primoria System são posicionamentos **separados**. Prioridade atual: marca pessoal (Eduardo Rolim). Produto fica em segundo plano por ora.
 
 ---
 
 ## 04-marca
 
-### guia-de-identidade-visual.md
-- Tem manual de marca? Link ou anexar arquivo.
-- Logo, cores oficiais (hex), fontes — colocar arquivos em `04-marca/logos`, `04-marca/paleta`, `04-marca/fontes`.
+### guia-de-identidade-visual.md — ✅ RESPONDIDO
+- Guia completo em [guia-de-identidade-visual.md](../04-marca/guia-de-identidade-visual.md): preto + verde neon + tipografia bold caixa-alta + imagens dramáticas + linguagem disruptiva.
 
 ### tom-de-voz.md
-- Como a marca fala: formal, descontraída, provocativa, sofisticada?
-- 3 palavras que descrevem o tom?
+- ✅ **(DOC1)** Simples, claro, didático, direto, persuasivo, aplicável. Técnico sem ser chato, sem enrolação, mentalidade de performance. Fala como operador, não como guru. Vai direto ao ponto, usa exemplos práticos, evita abstrações/jargões/promessas exageradas.
+- ✅ **(DOC3, complementa)** "Hormozi mindset". Vende preguiça (empresário quer algo mais fácil) e ganância (quer ganhar mais). Entrega valor antes de pedir qualquer coisa.
 
 ### mensagens-chave.md
-- Frases/slogans que a marca sempre repete ou quer repetir?
+- ✅ **(DOC1)** "IA aplicada com estratégia." / "Crescimento real com automação." / "Menos operação, mais escala." / "Tecnologia que gera lucro." / "Processo vence improviso." / "Clareza para crescer." / "IA só demite quem realmente não serve para a empresa."
+- ⚠️ **(DOC3, promessa em versão diferente)** "Vou te mostrar como transformar seu negócio com crescimento real usando IA, automações e estratégias de marketing." — mais suave que a promessa do DOC1 ("Transformo sua empresa com um time de IA que não reclama, trabalha 24h e ainda gera lucro"). Confirmar qual usar como principal, ou usar as duas em contextos diferentes (ex: DOC1 pra vendas, DOC3 pra bio/conteúdo).
 
-### palavras-proibidas.md
-- Palavras, piadas ou temas que NUNCA podem ser usados na comunicação?
+### palavras-proibidas.md — ✅ RESPONDIDO
+- Sem lista de temas banidos. Regra única: nada que seja crime ou infrinja regras das plataformas.
 
-### referencias-visuais.md
-- Contas/marcas que o cliente admira e quer se inspirar (Instagram de referência)?
+### referencias-visuais.md — ✅ RESPONDIDO
+- @obrunookamoto, @brun0gpt, @thaleslaray, @rafa.grandi.
 
 ---
 
 ## 05-canais
 
-### site/sitemap.md, paginas.md, seo.md
-- Site já existe? Link.
-- Páginas que precisam existir (home, cardápio, reservas, contato)?
-- Palavras-chave que o cliente quer aparecer no Google?
+### site/sitemap.md, paginas.md, seo.md — ✅ RESPONDIDO
+- Sem site por enquanto. Keywords em [seo.md](../05-canais/site/seo.md) (lista inicial, será atualizada).
 
-### meta-ads/contas.md
-- Tem Business Manager? ID da conta de anúncios, página do Facebook, perfil Instagram vinculado?
-- Verba mensal disponível pra ads?
+### meta-ads/contas.md — ✅ RESPONDIDO
+- BM/conta/página já configurados. Verba: só orgânico por ora.
 
-### meta-ads/campanhas.md, criativos.md, publicos.md, relatorios.md
-- Já rodou campanha antes? O que funcionou/não funcionou?
-- Formato de criativo preferido (foto do prato, vídeo, reels)?
+### meta-ads/campanhas.md, criativos.md, publicos.md, relatorios.md — ✅ RESPONDIDO
+- Formato validado: post lista (ex: "lista de IAs gratuitas"). Sem relatório consolidado ainda.
 
-### whatsapp/funis.md, scripts.md, objecoes.md
-- Como funciona hoje o atendimento via WhatsApp (reserva, dúvida, delivery)?
-- Tem número oficial? É atendido por quem?
+### whatsapp/funis.md, scripts.md, objecoes.md — ✅ RESPONDIDO
+- Sem atendimento direto hoje, só direct do Instagram.
 
-### google-ads, instagram, email, landing-pages (pastas ainda sem arquivo)
-- Esses canais serão usados nesse projeto? Se sim, aviso pra criar os arquivos.
+### instagram, youtube, landing-pages — ✅ RESPONDIDO
+- Instagram: [@oeduardo.1](https://www.instagram.com/oeduardo.1/). YouTube: [@edurolim](https://www.youtube.com/@edurolim/videos). Landing pages: nenhuma por enquanto.
 
 ---
 
 ## 06-operacao
 
-### briefing-master.md
-- Consolidado — preencher por último, puxando o que já foi respondido acima.
+### briefing-master.md — ✅ RESPONDIDO
+- Consolidado em [briefing-master.md](../06-operacao/briefing-master.md).
 
-### objetivos.md
-- Objetivo principal do marketing agora: mais reserva, mais delivery, mais evento, mais reconhecimento de marca?
+### objetivos.md — ✅ RESPONDIDO
+- Mais audiência e mais clientes.
 
-### metas-kpis.md
-- Números que definem sucesso (ex: X reservas/mês, CPL, ROAS)?
-- Prazo pra bater essas metas?
+### metas-kpis.md — ✅ RESPONDIDO
+- 5 mil seguidores nos próximos dias. 1 venda/semana (infoproduto, mentoria ou implementação).
 
-### sops.md
-- Processos internos que a IA/agência precisa seguir (ex: como pedir aprovação, como reportar)?
+### sops.md — ✅ RESPONDIDO
+- Operação já azeitada, roda sozinha — sem processo formal a documentar agora. Linha editorial completa em [04-marca/manifesto.md](../04-marca/manifesto.md) seções 8-10.
 
-### checklist.md
-- Checklist de rotina (ex: postar 3x/semana, relatório toda sexta)?
+### checklist.md — ✅ RESPONDIDO
+- Postar 1x/dia, aumentar depois.
 
-### calendario.md
-- Datas importantes: aniversário da casa, feriados fortes pro negócio, eventos sazonais?
+### calendario.md — ✅ RESPONDIDO
+- Sem datas por enquanto.
 
-### fluxos.md
-- Fluxo de trabalho entre agência e cliente (quem manda o quê, quando)?
+### fluxos.md — ✅ RESPONDIDO
+- Comunicação sempre via WhatsApp (Eduardo, Bruno, Thiago).
 
 ---
 
 ## 08-pesquisa
 
-### entrevistas.md
-- Alguma entrevista com cliente/equipe já feita? Colar aqui.
+### analise-de-mercado.md — ✅ RESPONDIDO
+- Relatório completo em [analise-de-mercado.md](../08-pesquisa/analise-de-mercado.md).
 
-### insights.md
-- Insights soltos que já surgiram nas conversas?
+### entrevistas.md — ✅ RESPONDIDO
+- Sem entrevista feita ainda.
 
-### analise-de-mercado.md
-- Dados de mercado, tendência do setor de gastrobar/bar na região?
+### insights.md — ✅ RESPONDIDO
+- Ver [insights.md](../08-pesquisa/insights.md).
 
 ---
 
 ## 09-assets (sem .md, só arquivos)
-- Jogar aqui: fotos (`imagens`), vídeos (`videos`), documentos institucionais (`documentos`), arquivos enviados pelo cliente (`anexos-cliente`).
+- ✅ RESPONDIDO — nada pra jogar por enquanto.
 
 ---
 
-**Como usar:** responda o que souber agora, deixe o resto em branco. Manda pra mim que eu preencho os arquivos correspondentes e sigo perguntando o que falta.
+**Como usar:** responda o que tem ❓, confirme ou corrija o que já veio ✅. Manda pra mim que eu distribuo cada resposta no arquivo .md correspondente da pasta certa.
