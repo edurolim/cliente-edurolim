@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>PRI-35 - Carrossel @oeduardo.1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Medium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-SemiBold.otf") format("opentype"); font-weight: 600; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Bold.otf") format("opentype"); font-weight: 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-ExtraBold.otf") format("opentype"); font-weight: 800; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-BoldItalic.otf") format("opentype"); font-weight: 700 800; font-style: italic; font-display: block; }
+    @font-face { font-family: "ImpactLocal"; src: url("fonts/LiberationSansNarrow-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; color: #fff; font-family: Inter, Arial, sans-serif; }
+    .slide, .slide-editorial {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 72px 56px 104px;
+      background: #111;
+    }
+    .slide-bg, .slide-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .slide-bg {
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.56);
+      z-index: 0;
+    }
+    .slide-overlay {
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.76) 100%);
+      z-index: 1;
+    }
+    .top-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px;
+      font-family: "Inter", sans-serif;
+    }
+    .top-header span {
+      color: rgba(255,255,255,0.58);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(0,0,0,0.5);
+    }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .footer svg { width: 22px; height: 22px; fill: #fff; }
+    .footer-left span { font-size: 18px; font-weight: 700; }
+    .footer-right { color: rgba(255,255,255,0.66); font-size: 18px; font-weight: 500; }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+    .cover-branding {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .cover-branding svg { width: 32px; height: 32px; fill: #fff; }
+    .cover-branding span {
+      font-size: 24px;
+      font-weight: 800;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    .title {
+      font-family: "ImpactLocal", Impact, "Arial Narrow", sans-serif;
+      font-size: 62px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.05;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    .title .highlight { color: #0E9957; }
+    .subtitle, .eyebrow {
+      max-width: 900px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.48;
+      color: rgba(255,255,255,0.88);
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    .eyebrow {
+      color: #3CD3A4;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .slide-editorial {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 82px 56px 96px;
+      background: #292A25;
+    }
+    .slide-editorial.accent-bg { background: #0E9957; }
+    .editorial-content {
+      z-index: 2;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+    }
+    .narrative-text {
+      color: #fff;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .narrative-text.secondary {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .narrative-text .highlight {
+      color: #0E9957;
+      font-style: italic;
+      font-weight: 800;
+    }
+    .accent-bg .narrative-text .highlight {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+    }
+    .photo {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #151611;
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+    .photo.tall img { height: 520px; }
+    .impact {
+      font-family: "ImpactLocal", Impact, "Arial Narrow", sans-serif;
+      font-size: 58px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 32px;
+      margin-top: 12px;
+    }
+    .cta-action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .cta-action-item svg { width: 48px; height: 48px; fill: none; }
+    .cta-follow-box {
+      width: fit-content;
+      margin-top: 20px;
+      padding: 24px 48px;
+      border: 1px solid rgba(14,153,87,0.55);
+      border-radius: 8px;
+      background: rgba(14,153,87,0.22);
+    }
+    .cta-follow-box span {
+      color: #3CD3A4;
+      font-size: 24px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('img/slide_01.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="slide-content">
+      <div class="cover-branding"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div>
+      <p class="eyebrow">TechCrunch, 7 de julho de 2026: Savi lancou um app para detectar golpes com IA.</p>
+      <h1 class="title">A IA criou um novo mercado: <span class="highlight">defesa</span> contra golpes que parecem reais</h1>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <p class="narrative-text">No mesmo movimento, a startup anunciou <span class="highlight">US$ 7 milhoes</span> em seed funding.</p>
+      <div class="photo"><img src="img/slide_02.jpg" alt=""></div>
+      <p class="narrative-text secondary">Quando um risco novo fica grande o suficiente, um produto novo nasce para tentar reduzir esse risco. Essa e a virada que importa para empresarios.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">1/8</div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <div class="photo tall"><img src="img/slide_03.jpg" alt=""></div>
+      <p class="narrative-text">A IA nao cria apenas produtividade. Ela tambem reduz o custo de <span class="highlight">fraude</span>, pressa falsa, mensagem convincente e decisao errada.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">2/8</div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <p class="narrative-text">O problema nao e a existencia de uma ferramenta mal usada.</p>
+      <div class="photo"><img src="img/slide_04.jpg" alt=""></div>
+      <p class="narrative-text secondary">O problema e uma operacao inteira tomando decisoes por canais informais, sem protocolo claro e sem confirmacao fora do fluxo de urgencia.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">3/8</div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <p class="narrative-text">Atendimento, comercial, suporte, financeiro e WhatsApp viraram <span class="highlight">pontos sensiveis</span>.</p>
+      <div class="photo"><img src="img/slide_05.jpg" alt=""></div>
+      <p class="narrative-text secondary">Pagamento urgente, mudanca de dados bancarios, pedido fora do processo e autorizacao por mensagem nao podem depender apenas de confianca visual ou familiaridade.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">4/8</div></div>
+  </div>
+
+  <div class="slide-editorial accent-bg">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <p class="impact">Toda nova capacidade da IA cria <span class="highlight">dois mercados</span>.</p>
+      <p class="narrative-text secondary">Quem usa para crescer. Quem precisa se proteger do abuso.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">5/8</div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <div class="photo tall"><img src="img/slide_07.jpg" alt=""></div>
+      <p class="narrative-text">O jogo maduro nao e adotar IA mais rapido. E adotar IA com <span class="highlight">sistema</span>: regra, revisao, canal de confirmacao, criterio de automacao e governanca operacional.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">6/8</div></div>
+  </div>
+
+  <div class="slide-editorial">
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="editorial-content">
+      <p class="narrative-text">Salvar este post para revisar a operacao.</p>
+      <div class="photo"><img src="img/slide_08.jpg" alt=""></div>
+      <p class="narrative-text secondary">Comentar <span class="highlight">IA</span> para receber um checklist de automacao, atendimento, financeiro e seguranca operacional antes de colocar IA no processo.</p>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">7/8</div></div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('img/slide_09.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="slide-content">
+      <h1 class="title">Comente <span class="highlight">IA</span> e receba o checklist</h1>
+      <p class="subtitle">Automacao, atendimento, financeiro e seguranca operacional antes de colocar IA no processo.</p>
+      <div class="cta-actions">
+        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#0E9957" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span style="color:#0E9957">SALVAR</span></div>
+        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><span>ENVIAR</span></div>
+        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#3CD3A4" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg><span style="color:#3CD3A4">CURTIR</span></div>
+      </div>
+      <div class="cta-follow-box"><span>SIGA @oeduardo.1</span></div>
+    </div>
+    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">8/8</div></div>
+  </div>
+</body>
+</html>

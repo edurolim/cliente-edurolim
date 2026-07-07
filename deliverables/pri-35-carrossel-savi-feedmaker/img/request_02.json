@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "Low angle shot of a lone smartphone on a dark office desk vibrating beside unsigned papers, a business owner hand frozen mid-reach in the split second before answering, blue screen glow on tense fingers, shallow depth of field, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}

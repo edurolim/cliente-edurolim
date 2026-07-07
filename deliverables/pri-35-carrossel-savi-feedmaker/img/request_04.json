@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "Environmental portrait of an empty company operations room at night, one person standing between finance desk, support headset and sales laptop, red notification lights glowing from different directions, feeling of exposed weak points, wide angle, dramatic backlight, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}
