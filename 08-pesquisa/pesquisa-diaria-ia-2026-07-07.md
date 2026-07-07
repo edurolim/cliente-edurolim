@@ -1,6 +1,6 @@
 # Pesquisa diaria IA - 2026-07-07
 
-Issue: PRI-26 - Pesquisa diaria sobre inteligencia artificial  
+Issue: PRI-25 - Pesquisa diaria sobre inteligencia artificial  
 Preparado por: Pesquisador de Noticias Virais - Primoria  
 Cliente: Eduardo Rolim / Primoria  
 Data da varredura: 2026-07-07  
