@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "Direct eye contact portrait of a Brazilian creator in his late 30s leaning slightly toward camera with serious inviting expression, warm side light, dark blurred office background, intense but calm, 85mm lens, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}

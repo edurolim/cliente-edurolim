@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "Confident entrepreneur standing at night in front of a transparent operations board with abstract connected lines and checkmarks blurred beyond readability, arms relaxed, warm green edge light, sense of system and control, environmental portrait, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}
