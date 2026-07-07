@@ -1,11 +1,24 @@
-# Pauta Savi - golpes com IA em tempo real
+# PRI-27 - Carrossel Savi com skin Feed Maker
 
 Issue: PRI-27
 Cliente: Eduardo Rolim / Primoria
-Data: 2026-07-07
-Atualizacao: refatorado com skin Feed Maker v2 - Eduardo Rolim em 2026-07-07.
-Fonte principal: TechCrunch, 2026-07-07 - Savi Security lancou app para iPhone e Android contra golpes realistas com IA e anunciou US$ 7 milhoes em seed funding.
+Data de producao: 2026-07-07
+Skill/skin: Feed Maker v2 - Eduardo Rolim
+Linha editorial: NOTICIAS
+Topico: Conectar uma noticia relevante ao problema do publico
+Objetivo: autoridade, salvamentos, compartilhamentos e DMs qualificadas
+CTA: salvar o post e comentar IA para checklist de governanca
+
+Fonte principal: TechCrunch, 7 de julho de 2026, 5:00 AM PDT
 Link: https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/
+
+## Guardrails editoriais
+
+- Nao usar sequestro como terror gratuito.
+- Nao ensinar tecnicas de fraude.
+- Nao prometer que apps eliminam todos os golpes.
+- Tratar a pauta como licao de sistema, governanca, automacao e risco operacional.
+- Preservar como fatos apenas o que esta no brief e na fonte: app da Savi para iPhone e Android, deteccao em textos, emails, voicemails e chamadas, US$ 7 milhoes em seed funding e publicacao da TechCrunch em 7 de julho de 2026.
 
 ## Carrossel final - Feed Maker v2
 
@@ -47,7 +60,7 @@ Comentar IA para receber um checklist de automacao, atendimento, financeiro e se
 
 texto 10 - — Feed Maker v2 | Eduardo Rolim
 
-## Legenda sugerida - Feed Maker v2
+## Legenda sugerida
 
 Uma noticia da TechCrunch de 7 de julho de 2026 mostra bem a fase atual da IA.
 
@@ -71,23 +84,23 @@ Duracao alvo: 35 a 45 segundos
 Formato: talking head com tela da materia, mockup neutro de chamada/mensagem e checklist visual.
 Risco visual: sem imagem de crime real, sequestro ou panico familiar.
 
-**0-3s**
+0-3s
 A IA criou um novo mercado: defesa contra golpes que parecem reais.
 
-**3-8s**
+3-8s
 A TechCrunch publicou em 7 de julho de 2026 que a Savi Security lancou um app para detectar golpes com IA em textos, emails, voicemails e chamadas.
 
-**8-13s**
+8-13s
 No mesmo movimento, a startup anunciou US$ 7 milhoes em seed funding.
 
-**13-22s**
+13-22s
 A licao para negocios nao e medo. E sistema. A mesma IA que acelera venda, suporte e conteudo tambem pode acelerar fraude, pressa falsa e decisao errada.
 
-**22-34s**
+22-34s
 Financeiro, atendimento, comercial e WhatsApp precisam de regra clara para pagamento urgente, mudanca de dados bancarios, autorizacao por mensagem e confirmacao por segundo canal.
 
-**34-42s**
+34-42s
 IA sem processo aumenta improviso. IA com sistema cria vantagem.
 
-**42-45s**
+42-45s
 Comente IA para receber um checklist de governanca basica.
