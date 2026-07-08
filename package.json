@@ -1,0 +1,23 @@
+{
+  "name": "cliente-edurolim",
+  "version": "1.0.0",
+  "description": "Render helpers for Eduardo Rolim deliverables",
+  "main": "index.js",
+  "scripts": {
+    "render": "node deliverables/pri-37-carrossel-savi-completo/render_pngs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edurolim/cliente-edurolim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edurolim/cliente-edurolim/issues"
+  },
+  "homepage": "https://github.com/edurolim/cliente-edurolim#readme",
+  "dependencies": {
+    "sharp": "^0.35.3"
+  }
+}

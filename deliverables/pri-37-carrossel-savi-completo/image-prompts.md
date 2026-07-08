@@ -1,28 +1,28 @@
-# PRI-32 - Prompts de imagem
+# PRI-37 - Prompts de imagem
 
-## Slide 01 - Capa
-Extreme close-up portrait of a Brazilian entrepreneur in his late 30s, eyes locked on camera with sudden realization and controlled alarm, one side of face in deep shadow, cold phone light reflected in his pupils, cinematic chiaroscuro, 85mm portrait lens, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+## Slide 01
+Extreme close-up portrait of a 42-year-old Brazilian male founder, intense direct eye contact, jaw tight, one side of face in deep shadow, harsh side light, expression of alarm mixed with certainty, cinematic, photorealistic, high contrast, moody lighting, 85mm portrait lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 02
-Low angle shot of a lone smartphone on a dark office desk vibrating beside unsigned papers, a business owner hand frozen mid-reach in the split second before answering, blue screen glow on tense fingers, shallow depth of field, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Low-angle environmental portrait of a startup founder standing alone in a dim operations floor, glowing phone alerts and email notifications reflected in glass walls, posture rigid as if realizing a new threat market, cinematic noir, photorealistic, high contrast, moody lighting, wide lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 03
-Over-the-shoulder macro shot of multiple messaging windows reflected abstractly in eyeglasses, a 42-year-old operations manager caught off guard, jaw tight, hand hovering over keyboard before approving a request, Dutch angle, cold monitor light, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Direct eye contact portrait of a content creator leaning slightly toward camera, subtle hand raised as if asking the viewer to pause and listen, clean white studio background, warm side light, cinematic, photorealistic, high contrast, 85mm portrait lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 04
-Environmental portrait of an empty company operations room at night, one person standing between finance desk, support headset and sales laptop, red notification lights glowing from different directions, feeling of exposed weak points, wide angle, dramatic backlight, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Overhead shot of a messy executive desk with smartphone, banking documents, approval notes and messaging app notifications, the exact moment before a wrong decision, tense stillness, cinematic, photorealistic, high contrast, moody lighting, top-down lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 05
-Split composition photograph of two identical office corridors diverging, one lit with clean green light and organized dashboards, the other dark with chaotic screens and warning-like glow, a founder standing at the fork mid-decision, low-angle wide shot, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Close mid-shot of a professional woman holding a phone while staring at a bank transfer screen with visible concern, dark office, shoulders tense, caught between urgency and doubt, cinematic, photorealistic, high contrast, moody lighting, shallow depth of field, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 06
-Close portrait of a calm senior business operator placing a printed protocol checklist beside a laptop and phone, warm light cutting through a dark room, posture controlled and decisive, shallow depth of field, 50mm lens, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Over-the-shoulder shot of hands hovering over a keyboard, multiple scam-like message windows glowing on monitors, cold blue light and dramatic shadow, split second before a costly mistake, cinematic, photorealistic, high contrast, moody lighting, dutch angle, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 07
-High contrast macro photograph of a hand frozen above an unlabeled laptop trackpad, a second phone beside it showing only abstract blurred light with no readable interface, split second of restraint before a risky approval, no signs, no labels, no screens with text, no UI words, dramatic side light, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, absolutely no text, no words, no letters, no numbers, no logos
+Wide shot of two paths diverging inside a modern office corridor, one side bright and ordered, the other side dark and chaotic, a single entrepreneur standing between them deciding the route, cinematic, photorealistic, high contrast, moody lighting, wide lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
 ## Slide 08
-Confident entrepreneur standing at night in front of a transparent operations board with abstract connected lines and checkmarks blurred beyond readability, arms relaxed, warm green edge light, sense of system and control, environmental portrait, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+Person standing in front of a floor-to-ceiling window overlooking a lit city at night, posture controlled and calm, warm interior light outlining silhouette, visual feeling of operational control after chaos, cinematic, photorealistic, high contrast, moody lighting, low-angle wide shot, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
 
-## Slide 09 - CTA
-Direct eye contact portrait of a Brazilian creator in his late 30s leaning slightly toward camera with serious inviting expression, warm side light, dark blurred office background, intense but calm, 85mm lens, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters
+## Slide 09
+Direct eye contact portrait of a strategist with quiet intensity, slight half-smile, leaning toward camera as if making a clear invitation, soft background bokeh, warm amber side light, cinematic, photorealistic, high contrast, 85mm portrait lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters

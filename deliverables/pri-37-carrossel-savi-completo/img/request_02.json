@@ -1,8 +1,8 @@
 {
   "model": "gpt-image-1",
-  "prompt": "Low angle shot of a lone smartphone on a dark office desk vibrating beside unsigned papers, a business owner hand frozen mid-reach in the split second before answering, blue screen glow on tense fingers, shallow depth of field, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "prompt": "Low-angle environmental portrait of a startup founder standing alone in a dim operations floor, glowing phone alerts and email notifications reflected in glass walls, posture rigid as if realizing a new threat market, cinematic noir, photorealistic, high contrast, moody lighting, wide lens, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
   "size": "1024x1536",
-  "quality": "high",
+  "quality": "medium",
   "n": 1,
   "output_format": "jpeg",
   "output_compression": 92

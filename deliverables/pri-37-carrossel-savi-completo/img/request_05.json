@@ -1,8 +1,8 @@
 {
   "model": "gpt-image-1",
-  "prompt": "Split composition photograph of two identical office corridors diverging, one lit with clean green light and organized dashboards, the other dark with chaotic screens and warning-like glow, a founder standing at the fork mid-decision, low-angle wide shot, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "prompt": "Close mid-shot of a professional woman holding a phone while staring at a bank transfer screen with visible concern, dark office, shoulders tense, caught between urgency and doubt, cinematic, photorealistic, high contrast, moody lighting, shallow depth of field, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
   "size": "1024x1536",
-  "quality": "high",
+  "quality": "medium",
   "n": 1,
   "output_format": "jpeg",
   "output_compression": 92

@@ -3,309 +3,655 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1080, initial-scale=1">
-  <title>PRI-35 - Carrossel @oeduardo.1</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>PRI-37 - Carrossel @oeduardo.1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&family=Space+Grotesk:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
   <style>
     @font-face { font-family: "Inter"; src: url("fonts/Inter-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: block; }
     @font-face { font-family: "Inter"; src: url("fonts/Inter-Medium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: block; }
     @font-face { font-family: "Inter"; src: url("fonts/Inter-SemiBold.otf") format("opentype"); font-weight: 600; font-style: normal; font-display: block; }
     @font-face { font-family: "Inter"; src: url("fonts/Inter-Bold.otf") format("opentype"); font-weight: 700; font-style: normal; font-display: block; }
     @font-face { font-family: "Inter"; src: url("fonts/Inter-ExtraBold.otf") format("opentype"); font-weight: 800; font-style: normal; font-display: block; }
-    @font-face { font-family: "Inter"; src: url("fonts/Inter-BoldItalic.otf") format("opentype"); font-weight: 700 800; font-style: italic; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-BoldItalic.otf") format("opentype"); font-weight: 700; font-style: italic; font-display: block; }
     @font-face { font-family: "ImpactLocal"; src: url("fonts/LiberationSansNarrow-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #111; color: #fff; font-family: Inter, Arial, sans-serif; }
-    .slide, .slide-editorial {
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: #000; }
+    body { font-family: "Inter", sans-serif; }
+
+    .hl { color: #0E9957; font-weight: 700; font-style: italic; }
+
+    .top-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 48px;
+      z-index: 20;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.50);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .top-header.light {
+      color: rgba(0,0,0,0.35);
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: rgba(255,255,255,0.12);
+      z-index: 30;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #0E9957;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      right: 34px;
+      bottom: 28px;
+      z-index: 26;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-count {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .slide-arrow.light .slide-count { color: rgba(0,0,0,0.44); }
+    .slide-arrow.dark .slide-count { color: rgba(255,255,255,0.62); }
+
+    .slide-capa,
+    .slide-split,
+    .slide-mini-cta,
+    .slide-tipo-c,
+    .slide-tipo-a,
+    .slide-tipo-d,
+    .slide-cta {
       width: 1080px;
       height: 1350px;
       position: relative;
       overflow: hidden;
       page-break-after: always;
     }
-    .slide {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 72px 56px 104px;
-      background: #111;
+
+    .slide-capa {
+      background: #000;
     }
-    .slide-bg, .slide-overlay {
+
+    .capa-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-    }
-    .slide-bg {
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.56);
+      object-fit: cover;
+      filter: brightness(0.72);
       z-index: 0;
     }
-    .slide-overlay {
-      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.76) 100%);
+
+    .capa-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.18) 36%, rgba(0,0,0,0.54) 64%, rgba(0,0,0,0.78) 100%);
       z-index: 1;
     }
-    .top-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 40px;
-      font-family: "Inter", sans-serif;
-    }
-    .top-header span {
-      color: rgba(255,255,255,0.58);
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-    }
-    .footer {
+
+    .capa-content {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 92px;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(0,0,0,0.5);
-    }
-    .footer-left { display: flex; align-items: center; gap: 10px; }
-    .footer svg { width: 22px; height: 22px; fill: #fff; }
-    .footer-left span { font-size: 18px; font-weight: 700; }
-    .footer-right { color: rgba(255,255,255,0.66); font-size: 18px; font-weight: 500; }
-    .slide-content {
-      position: relative;
-      z-index: 2;
+      padding: 0 68px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 24px;
-      width: 100%;
+      text-align: center;
     }
-    .cover-branding {
+
+    .capa-pretitle {
+      max-width: 880px;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.42;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.9);
+    }
+
+    .capa-title {
+      max-width: 900px;
+      font-family: Impact, "ImpactLocal", "Arial Narrow", sans-serif;
+      font-size: 96px;
+      font-weight: 400;
+      line-height: 0.96;
+      color: #fff;
+      text-transform: none;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.95);
+    }
+
+    .capa-btn {
+      margin-top: 8px;
+      padding: 20px 44px;
+      border-radius: 999px;
+      background: #0E9957;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 12px;
-      margin-bottom: 12px;
     }
-    .cover-branding svg { width: 32px; height: 32px; fill: #fff; }
-    .cover-branding span {
-      font-size: 24px;
-      font-weight: 800;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+
+    .slide-split {
+      display: flex;
+      background: #111;
     }
-    .title {
-      font-family: "ImpactLocal", Impact, "Arial Narrow", sans-serif;
-      font-size: 62px;
-      font-weight: 400;
-      letter-spacing: 0;
-      line-height: 1.05;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    }
-    .title .highlight { color: #0E9957; }
-    .subtitle, .eyebrow {
-      max-width: 900px;
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 1.48;
-      color: rgba(255,255,255,0.88);
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-    }
-    .eyebrow {
-      color: #3CD3A4;
-      font-size: 22px;
-      font-weight: 700;
-    }
-    .slide-editorial {
+
+    .split-left {
+      width: 50%;
+      height: 100%;
+      background: #0d0d0d;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 82px 56px 96px;
-      background: #292A25;
-    }
-    .slide-editorial.accent-bg { background: #0E9957; }
-    .editorial-content {
+      padding: 76px 48px 96px;
+      gap: 22px;
       z-index: 2;
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      justify-content: center;
-      gap: 28px;
     }
-    .narrative-text {
+
+    .split-tag {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 8px 18px;
+      border-radius: 4px;
+      background: #0E9957;
       color: #fff;
-      font-size: 38px;
-      font-weight: 500;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .split-title {
+      color: #fff;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.02;
+    }
+
+    .split-divider {
+      width: 48px;
+      height: 3px;
+      border: none;
+      background: #0E9957;
+    }
+
+    .split-item {
+      display: flex;
+      gap: 12px;
+      color: rgba(255,255,255,0.88);
+      font-size: 28px;
+      font-weight: 300;
       line-height: 1.45;
     }
-    .narrative-text.secondary {
-      font-size: 28px;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-    .narrative-text .highlight {
+
+    .split-bullet {
       color: #0E9957;
-      font-style: italic;
       font-weight: 800;
+      flex-shrink: 0;
     }
-    .accent-bg .narrative-text .highlight {
-      color: #fff;
-      text-decoration: underline;
-      text-decoration-thickness: 3px;
+
+    .split-right {
+      width: 50%;
+      height: 100%;
+      position: relative;
     }
-    .photo {
+
+    .split-right img {
       width: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #151611;
-    }
-    .photo img {
-      display: block;
-      width: 100%;
-      height: 380px;
+      height: 100%;
       object-fit: cover;
+      filter: brightness(0.88);
     }
-    .photo.tall img { height: 520px; }
-    .impact {
-      font-family: "ImpactLocal", Impact, "Arial Narrow", sans-serif;
-      font-size: 58px;
-      font-weight: 400;
-      letter-spacing: 0;
-      line-height: 1.08;
-      text-transform: uppercase;
+
+    .slide-mini-cta,
+    .slide-tipo-c,
+    .slide-cta {
+      background: #fff;
     }
-    .cta-actions {
-      display: flex;
-      gap: 32px;
-      margin-top: 12px;
-    }
-    .cta-action-item {
+
+    .mini-cta-body,
+    .tc-body {
+      height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      padding: 76px 68px 104px;
+    }
+
+    .mini-cta-body { gap: 30px; }
+
+    .mini-cta-accent,
+    .tc-divider,
+    .td-divider,
+    .ta-divider {
+      width: 56px;
+      height: 4px;
+      border-radius: 2px;
+      background: #0E9957;
+    }
+
+    .mini-cta-title {
+      color: #0d0d0d;
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .slide-mini-cta .progress-bar,
+    .slide-tipo-c .progress-bar,
+    .slide-cta .progress-bar {
+      background: rgba(0,0,0,0.08);
+    }
+
+    .tc-body { gap: 28px; }
+
+    .tc-title {
+      color: #0d0d0d;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    .tc-divider-line {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .tc-text {
+      color: rgba(0,0,0,0.72);
+      font-size: 34px;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .tc-text strong {
+      color: #0d0d0d;
+      font-weight: 700;
+    }
+
+    .tc-formula {
+      padding: 20px 24px;
+      border-left: 5px solid #0E9957;
+      border-radius: 0 8px 8px 0;
+      background: #f5f5f5;
+      color: #0d0d0d;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .slide-tipo-a {
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ta-img {
+      width: 100%;
+      height: 580px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .ta-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.96);
+    }
+
+    .ta-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 44px 58px 100px;
+    }
+
+    .slide-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .ta-title {
+      color: #fff;
+      font-size: 46px;
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    .ta-text {
+      color: rgba(255,255,255,0.8);
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.58;
+    }
+
+    .slide-tipo-d {
+      background: #000;
+    }
+
+    .td-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+      z-index: 0;
+    }
+
+    .td-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 28%, rgba(0,0,0,0.58) 58%, rgba(0,0,0,0.82) 100%);
+      z-index: 1;
+    }
+
+    .td-content {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding: 120px 68px 100px;
+    }
+
+    .td-title {
+      color: #fff;
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    }
+
+    .td-rule {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .td-text {
+      color: rgba(255,255,255,0.84);
+      font-size: 33px;
+      font-weight: 300;
+      line-height: 1.55;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.74);
+    }
+
+    .cta-header {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      font-size: 16px;
-      font-weight: 800;
+      padding: 26px 48px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0,0,0,0.35);
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    .cta-action-item svg { width: 48px; height: 48px; fill: none; }
-    .cta-follow-box {
-      width: fit-content;
-      margin-top: 20px;
-      padding: 24px 48px;
-      border: 1px solid rgba(14,153,87,0.55);
-      border-radius: 8px;
-      background: rgba(14,153,87,0.22);
+
+    .cta-body {
+      height: calc(100% - 59px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 68px;
     }
-    .cta-follow-box span {
-      color: #3CD3A4;
-      font-size: 24px;
-      font-weight: 800;
+
+    .cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .cta-name {
+      color: #0f0f0f;
+      font-family: "Playfair Display", serif;
+      font-size: 72px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .cta-text {
+      color: #0f0f0f;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .cta-source {
+      color: rgba(0,0,0,0.55);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="slide">
-    <div class="slide-bg" style="background-image:url('img/slide_01.jpg')"></div>
-    <div class="slide-overlay"></div>
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="slide-content">
-      <div class="cover-branding"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div>
-      <p class="eyebrow">TechCrunch, 7 de julho de 2026: Savi lancou um app para detectar golpes com IA.</p>
-      <h1 class="title">A IA criou um novo mercado: <span class="highlight">defesa</span> contra golpes que parecem reais</h1>
+  <div class="slide-capa">
+    <img class="capa-img" src="img/slide_01.jpg" alt="">
+    <div class="capa-overlay"></div>
+    <div class="top-header">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
     </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <p class="narrative-text">No mesmo movimento, a startup anunciou <span class="highlight">US$ 7 milhoes</span> em seed funding.</p>
-      <div class="photo"><img src="img/slide_02.jpg" alt=""></div>
-      <p class="narrative-text secondary">Quando um risco novo fica grande o suficiente, um produto novo nasce para tentar reduzir esse risco. Essa e a virada que importa para empresarios.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">1/8</div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <div class="photo tall"><img src="img/slide_03.jpg" alt=""></div>
-      <p class="narrative-text">A IA nao cria apenas produtividade. Ela tambem reduz o custo de <span class="highlight">fraude</span>, pressa falsa, mensagem convincente e decisao errada.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">2/8</div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <p class="narrative-text">O problema nao e a existencia de uma ferramenta mal usada.</p>
-      <div class="photo"><img src="img/slide_04.jpg" alt=""></div>
-      <p class="narrative-text secondary">O problema e uma operacao inteira tomando decisoes por canais informais, sem protocolo claro e sem confirmacao fora do fluxo de urgencia.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">3/8</div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <p class="narrative-text">Atendimento, comercial, suporte, financeiro e WhatsApp viraram <span class="highlight">pontos sensiveis</span>.</p>
-      <div class="photo"><img src="img/slide_05.jpg" alt=""></div>
-      <p class="narrative-text secondary">Pagamento urgente, mudanca de dados bancarios, pedido fora do processo e autorizacao por mensagem nao podem depender apenas de confianca visual ou familiaridade.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">4/8</div></div>
-  </div>
-
-  <div class="slide-editorial accent-bg">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <p class="impact">Toda nova capacidade da IA cria <span class="highlight">dois mercados</span>.</p>
-      <p class="narrative-text secondary">Quem usa para crescer. Quem precisa se proteger do abuso.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">5/8</div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <div class="photo tall"><img src="img/slide_07.jpg" alt=""></div>
-      <p class="narrative-text">O jogo maduro nao e adotar IA mais rapido. E adotar IA com <span class="highlight">sistema</span>: regra, revisao, canal de confirmacao, criterio de automacao e governanca operacional.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">6/8</div></div>
-  </div>
-
-  <div class="slide-editorial">
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="editorial-content">
-      <p class="narrative-text">Salvar este post para revisar a operacao.</p>
-      <div class="photo"><img src="img/slide_08.jpg" alt=""></div>
-      <p class="narrative-text secondary">Comentar <span class="highlight">IA</span> para receber um checklist de automacao, atendimento, financeiro e seguranca operacional antes de colocar IA no processo.</p>
-    </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">7/8</div></div>
-  </div>
-
-  <div class="slide">
-    <div class="slide-bg" style="background-image:url('img/slide_09.jpg')"></div>
-    <div class="slide-overlay"></div>
-    <div class="top-header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
-    <div class="slide-content">
-      <h1 class="title">Comente <span class="highlight">IA</span> e receba o checklist</h1>
-      <p class="subtitle">Automacao, atendimento, financeiro e seguranca operacional antes de colocar IA no processo.</p>
-      <div class="cta-actions">
-        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#0E9957" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span style="color:#0E9957">SALVAR</span></div>
-        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg><span>ENVIAR</span></div>
-        <div class="cta-action-item"><svg viewBox="0 0 24 24" stroke="#3CD3A4" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg><span style="color:#3CD3A4">CURTIR</span></div>
+    <div class="capa-content">
+      <p class="capa-pretitle">TechCrunch publicou em 7 de julho de 2026 que a Savi Security lancou um app para detectar golpes com IA em textos, emails, voicemails e chamadas.</p>
+      <h1 class="capa-title">A IA criou um novo mercado: <span class="hl">defesa</span> contra golpes que parecem reais</h1>
+      <div class="capa-btn">Salvar este post
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </div>
-      <div class="cta-follow-box"><span>SIGA @oeduardo.1</span></div>
     </div>
-    <div class="footer"><div class="footer-left"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg><span>@oeduardo.1</span></div><div class="footer-right">8/8</div></div>
+    <div class="progress-bar"><div class="progress-fill" style="width:11.1%"></div></div>
   </div>
+
+  <div class="slide-split">
+    <div class="split-left">
+      <span class="split-tag">Sinal</span>
+      <p class="split-title">US$ 7 milhoes para um problema que virou <span class="hl">mercado</span></p>
+      <hr class="split-divider">
+      <div class="split-item"><span class="split-bullet">•</span><span>No mesmo movimento, a startup anunciou <strong>US$ 7 milhoes</strong> em seed funding.</span></div>
+      <div class="split-item"><span class="split-bullet">•</span><span>A Savi tenta detectar golpes em textos, emails, voicemails e chamadas.</span></div>
+      <div class="split-item"><span class="split-bullet">•</span><span>Quando um risco novo fica grande o suficiente, nasce uma camada nova de protecao.</span></div>
+    </div>
+    <div class="split-right">
+      <img src="img/slide_02.jpg" alt="">
+    </div>
+    <div class="slide-arrow dark">
+      <span class="slide-count">1/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:22.2%"></div></div>
+  </div>
+
+  <div class="slide-mini-cta">
+    <div class="top-header light">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="mini-cta-body">
+      <div class="mini-cta-accent"></div>
+      <p class="mini-cta-title">Antes de continuar: Quer mais conteudos como esse? Toca <span class="hl">2 vezes</span> na tela e depois me segue.</p>
+    </div>
+    <div class="slide-arrow light">
+      <span class="slide-count">2/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E9957" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:33.3%"></div></div>
+  </div>
+
+  <div class="slide-tipo-c">
+    <div class="top-header light">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="tc-body">
+      <div class="tc-divider"></div>
+      <p class="tc-title">O problema nao e uma <span class="hl">ferramenta</span> mal usada.</p>
+      <hr class="tc-divider-line">
+      <p class="tc-text">O risco real aparece quando a operacao inteira toma decisoes por canais informais, sem protocolo claro e sem confirmacao fora do fluxo de urgencia.</p>
+      <div class="tc-formula">IA sem processo = pressa convincente + decisao errada em escala.</div>
+      <p class="tc-text">Atendimento, comercial, suporte, financeiro e WhatsApp viraram <strong>pontos sensiveis</strong>.</p>
+    </div>
+    <div class="slide-arrow light">
+      <span class="slide-count">3/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E9957" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:44.4%"></div></div>
+  </div>
+
+  <div class="slide-tipo-a">
+    <div class="top-header">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="ta-img"><img src="img/slide_05.jpg" alt=""></div>
+    <div class="ta-body">
+      <div class="ta-divider"></div>
+      <p class="ta-title">Pagamento urgente, troca bancaria e autorizacao por mensagem nao podem depender de <span class="hl">confianca visual</span>.</p>
+      <hr class="slide-divider">
+      <p class="ta-text">Familiaridade, tom de voz e foto de perfil ja nao bastam. Se o processo aceita improviso, a IA barateia o erro.</p>
+    </div>
+    <div class="slide-arrow dark">
+      <span class="slide-count">4/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:55.6%"></div></div>
+  </div>
+
+  <div class="slide-tipo-d">
+    <img class="td-img" src="img/slide_06.jpg" alt="">
+    <div class="td-overlay"></div>
+    <div class="top-header">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="td-content">
+      <div class="td-divider"></div>
+      <p class="td-title">A IA nao cria so <span class="hl">produtividade</span>.</p>
+      <hr class="td-rule">
+      <p class="td-text">Ela tambem reduz o custo de fraude, pressa falsa, mensagem convincente e decisao errada. Para empresarios, a licao nao e medo. E sistema.</p>
+    </div>
+    <div class="slide-arrow dark">
+      <span class="slide-count">5/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:66.7%"></div></div>
+  </div>
+
+  <div class="slide-split">
+    <div class="split-left">
+      <span class="split-tag">Licao</span>
+      <p class="split-title">Toda nova capacidade da IA cria <span class="hl">dois mercados</span>.</p>
+      <hr class="split-divider">
+      <div class="split-item"><span class="split-bullet">•</span><span>Quem usa para crescer.</span></div>
+      <div class="split-item"><span class="split-bullet">•</span><span>Quem precisa se proteger do abuso.</span></div>
+      <div class="split-item"><span class="split-bullet">•</span><span>Quem organiza sistema primeiro ganha vantagem antes do resto.</span></div>
+    </div>
+    <div class="split-right">
+      <img src="img/slide_07.jpg" alt="">
+    </div>
+    <div class="slide-arrow dark">
+      <span class="slide-count">6/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:77.8%"></div></div>
+  </div>
+
+  <div class="slide-tipo-d">
+    <img class="td-img" src="img/slide_08.jpg" alt="">
+    <div class="td-overlay"></div>
+    <div class="top-header">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="td-content">
+      <div class="td-divider"></div>
+      <p class="td-title">O jogo maduro nao e adotar IA mais <span class="hl">rapido</span>.</p>
+      <hr class="td-rule">
+      <p class="td-text">E adotar IA com regra, revisao, canal de confirmacao e criterio de automacao.</p>
+      <hr class="td-rule">
+      <p class="td-text">IA sem processo aumenta improviso. IA com sistema cria vantagem.</p>
+    </div>
+    <div class="slide-arrow dark">
+      <span class="slide-count">7/8</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:88.9%"></div></div>
+  </div>
+
+  <div class="slide-cta">
+    <div class="cta-header">
+      <span>Eduardo Rolim</span><span>@oeduardo.1</span><span>Julho 2026 ®</span>
+    </div>
+    <div class="cta-body">
+      <div class="cta-inner">
+        <span class="cta-name">Eduardo Rolim</span>
+        <p class="cta-text"><span class="hl">Salve este post e comente IA</span> para receber um checklist de governanca basica antes de colocar IA na operacao.</p>
+        <p class="cta-source">Fonte: TechCrunch, 7 de julho de 2026. Savi Security, deteccao de golpes com IA em textos, emails, voicemails e chamadas.</p>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+  </div>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var slideParam = params.get('slide');
+      if (!slideParam) return;
+
+      var slideIndex = parseInt(slideParam, 10);
+      if (!Number.isFinite(slideIndex) || slideIndex < 1) return;
+
+      var slides = Array.from(document.querySelectorAll('body > div'));
+      var selected = slides[slideIndex - 1];
+      if (!selected) return;
+
+      var whiteSlides = new Set([3, 4, 9]);
+      var bg = whiteSlides.has(slideIndex) ? '#ffffff' : '#111111';
+
+      document.documentElement.style.background = bg;
+      document.body.style.background = bg;
+      document.body.style.margin = '0';
+
+      slides.forEach(function (slide, idx) {
+        if (idx !== slideIndex - 1) slide.style.display = 'none';
+      });
+
+      selected.style.display = selected.classList.contains('slide-split') ? 'flex' : 'block';
+    })();
+  </script>
 </body>
 </html>

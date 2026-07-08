@@ -34,7 +34,7 @@ def request_image(api_key, prompt, with_format=True):
         "model": "gpt-image-1",
         "prompt": prompt,
         "size": "1024x1536",
-        "quality": "high",
+        "quality": "medium",
         "n": 1,
     }
     if with_format:
@@ -72,10 +72,6 @@ def main():
 
     for index, prompt in prompts:
         out_path = IMG_DIR / f"slide_{index:02d}.jpg"
-        if out_path.exists() and out_path.stat().st_size > 10_000:
-            print(f"slide {index:02d}: exists, skipping", flush=True)
-            continue
-
         print(f"slide {index:02d}: requesting image", flush=True)
         request_payload, result = request_image(api_key, prompt)
         b64 = result.get("data", [{}])[0].get("b64_json")
