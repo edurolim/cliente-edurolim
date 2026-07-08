@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "High contrast macro photograph of a hand frozen above an unlabeled laptop trackpad, a second phone beside it showing only abstract blurred light with no readable interface, split second of restraint before a risky approval, no signs, no labels, no screens with text, no UI words, dramatic side light, cinematic, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, absolutely no text, no words, no letters, no numbers, no logos",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}

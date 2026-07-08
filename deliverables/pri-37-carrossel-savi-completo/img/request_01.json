@@ -1,0 +1,9 @@
+{
+  "model": "gpt-image-1",
+  "prompt": "Extreme close-up portrait of a Brazilian entrepreneur in his late 30s, eyes locked on camera with sudden realization and controlled alarm, one side of face in deep shadow, cold phone light reflected in his pupils, cinematic chiaroscuro, 85mm portrait lens, photorealistic, high contrast, moody lighting, portrait orientation, 4:5 aspect ratio, no text, no words, no letters",
+  "size": "1024x1536",
+  "quality": "high",
+  "n": 1,
+  "output_format": "jpeg",
+  "output_compression": 92
+}
