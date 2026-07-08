@@ -11,12 +11,12 @@
 ## Entrega finalizada
 
 - Pacote visual final montado em 8 slides, alinhado a pauta de descoberta organica da `PRI-42`.
-- HTML refeito no estilo editorial do skill, com hierarquia preto/verde e CTA final.
+- HTML refeito no padrao full-bleed solicitado em comentario de revisao: imagem em tela cheia, topo discreto, headline condensada gigante, palavra-chave em verde e CTA em botao.
 - 8 imagens proprietarias geradas e salvas em `img/`.
-- 8 PNGs finais exportados em `png/`, formato 1080x1350.
+- 8 PNGs finais reexportados em `png/`, formato 1080x1350.
 - Legenda final salva em `legenda.txt`.
 - Renderizador reprodutivel salvo em `render_pngs.js`, usando `sharp` e fontes locais.
 
 ## Observacao operacional
 
-- O pacote final reutiliza as imagens e PNGs validados no fluxo anterior de Search Console para manter consistencia com a pauta `PRI-42`.
+- Revisao aplicada em 2026-07-08 apos feedback com imagem de referencia `slide_01.png`: o pacote deixou os layouts mistos e passou a usar um sistema unico de poster full-bleed mais proximo da skill visual usada no Claude Code.
