@@ -13,7 +13,8 @@ fs.mkdirSync(outDir, { recursive: true });
 
 const green = '#0E9957';
 const white = '#ffffff';
-const muted = 'rgba(255,255,255,0.72)';
+const dark = '#0d0d0d';
+const darkSolid = '#292A25';
 
 function esc(value) {
   return String(value)
@@ -23,6 +24,10 @@ function esc(value) {
     .replace(/"/g, '&quot;');
 }
 
+function richLine(line) {
+  return esc(line).replace(/\[\[(.+?)\]\]/g, `<tspan fill="${green}" font-style="italic" font-weight="700">$1</tspan>`);
+}
+
 function wrap(text, maxChars) {
   const words = text.split(/\s+/).filter(Boolean);
   const lines = [];
@@ -30,7 +35,7 @@ function wrap(text, maxChars) {
 
   for (const word of words) {
     const next = line ? `${line} ${word}` : word;
-    if (next.length > maxChars && line) {
+    if (line && next.length > maxChars) {
       lines.push(line);
       line = word;
     } else {
@@ -42,15 +47,10 @@ function wrap(text, maxChars) {
   return lines;
 }
 
-function richLine(line) {
-  return esc(line)
-    .replace(/\[\[(.+?)\]\]/g, `<tspan fill="${green}">$1</tspan>`);
-}
-
 function textLines(lines, x, y, size, fill, options = {}) {
-  const weight = options.weight || 700;
+  const lineHeight = options.lineHeight || Math.round(size * 1.22);
   const family = options.family || 'Inter, Arial, sans-serif';
-  const lineHeight = options.lineHeight || Math.round(size * 1.12);
+  const weight = options.weight || 400;
   const anchor = options.anchor || 'start';
   const opacity = options.opacity == null ? 1 : options.opacity;
   return lines.map((line, index) => (
@@ -58,178 +58,240 @@ function textLines(lines, x, y, size, fill, options = {}) {
   )).join('\n');
 }
 
-function header() {
+function header(light = false) {
+  const fill = light ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.50)';
   return `
-    <g font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="1.6" fill="rgba(255,255,255,0.58)">
+    <g font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="14" letter-spacing="1" fill="${fill}">
       <text x="48" y="40">EDUARDO ROLIM</text>
       <text x="540" y="40" text-anchor="middle">@OEDUARDO.1</text>
       <text x="1032" y="40" text-anchor="end">JULHO 2026 ®</text>
     </g>`;
 }
 
-function progress(index, total) {
+function progress(index, total, light = false) {
+  const bg = light ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.12)';
   const width = Math.round((W * index) / total);
   return `
-    <rect x="0" y="1342" width="${W}" height="8" fill="rgba(255,255,255,0.14)"/>
-    <rect x="0" y="1342" width="${width}" height="8" fill="${green}"/>`;
+    <rect x="0" y="1343" width="${W}" height="7" fill="${bg}"/>
+    <rect x="0" y="1343" width="${width}" height="7" fill="${green}"/>`;
 }
 
-function overlaySvg(body) {
+function arrow(light = false) {
+  const stroke = light ? green : white;
+  return `
+    <g transform="translate(1012 1302)" opacity="0.55" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <line x1="-18" y1="0" x2="0" y2="0"/>
+      <polyline points="-7 -7,0 0,-7 7"/>
+    </g>`;
+}
+
+function overlaySvg(body, background = null) {
   return Buffer.from(`
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+      ${background ? `<rect width="${W}" height="${H}" fill="${background}"/>` : ''}
       ${body}
     </svg>`);
 }
 
-async function fitImage(file) {
-  return sharp(path.join(imgDir, file))
-    .resize(W, H, { fit: 'cover', position: 'centre' })
-    .modulate({ saturation: 0.92, brightness: 0.86 })
-    .toBuffer();
+async function fitImage(file, width = W, height = H) {
+  return sharp(path.join(imgDir, file)).resize(width, height, { fit: 'cover', position: 'centre' }).toBuffer();
 }
 
-async function renderPoster({
-  image,
-  eyebrow,
-  kicker,
-  title,
-  cta,
-  index,
-  outFile,
-  titleY = 895,
-  kickerY = 770,
-  overlay = 'strong',
-}) {
-  const bg = await fitImage(image);
-  const titleLines = title.map((line) => line.toUpperCase());
-  const titleSize = titleLines.length >= 4 ? 70 : titleLines.length === 3 ? 82 : 92;
-  const titleLineHeight = titleLines.length >= 4 ? 72 : titleLines.length === 3 ? 84 : 90;
-  const titleBlock = textLines(titleLines, 540, titleY, titleSize, white, {
-    family: 'Impact, ImpactLocal, Arial Narrow, sans-serif',
-    lineHeight: titleLineHeight,
-    anchor: 'middle',
-  });
-  const kickerBlock = kicker
-    ? textLines(wrap(kicker.toUpperCase(), 44), 540, kickerY, 28, white, {
-        weight: 800,
-        lineHeight: 40,
-        anchor: 'middle',
-      })
-    : '';
-  const eyebrowBlock = eyebrow
-    ? textLines([eyebrow.toUpperCase()], 540, 732, 18, muted, {
-        weight: 700,
-        lineHeight: 24,
-        anchor: 'middle',
-      })
-    : '';
-  const ctaBlock = cta
-    ? `
-      <rect x="366" y="1196" width="348" height="64" rx="32" fill="${green}"/>
-      <text x="540" y="1238" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="900" text-anchor="middle">${esc(cta.toUpperCase())} →</text>`
-    : '';
-  const overlayFill = overlay === 'soft'
-    ? 'rgba(0,0,0,0.34)'
-    : 'rgba(0,0,0,0.50)';
+async function renderImageFull(imageFile, body, outFile) {
+  const bg = await fitImage(imageFile);
+  await sharp(bg).composite([{ input: overlaySvg(body) }]).png().toFile(path.join(outDir, outFile));
+}
 
-  await sharp(bg)
-    .composite([{ input: overlaySvg(`
-      <defs>
-        <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="rgba(0,0,0,0.14)"/>
-          <stop offset="42%" stop-color="${overlayFill}"/>
-          <stop offset="100%" stop-color="rgba(0,0,0,0.84)"/>
-        </linearGradient>
-      </defs>
-      <rect width="${W}" height="${H}" fill="url(#shade)"/>
-      ${header()}
-      ${eyebrowBlock}
-      ${kickerBlock}
-      ${titleBlock}
-      ${ctaBlock}
-      ${progress(index, 8)}
-    `) }])
+async function renderSplit(imageFile, body, outFile) {
+  const right = await fitImage(imageFile, 540, H);
+  await sharp({
+    create: { width: W, height: H, channels: 4, background: dark },
+  })
+    .composite([
+      { input: right, left: 540, top: 0 },
+      { input: overlaySvg(body) },
+    ])
     .png()
     .toFile(path.join(outDir, outFile));
 }
 
+async function renderTopImage(imageFile, body, outFile, topHeight = 580) {
+  const top = await fitImage(imageFile, W, topHeight);
+  await sharp({
+    create: { width: W, height: H, channels: 4, background: dark },
+  })
+    .composite([
+      { input: top, left: 0, top: 0 },
+      { input: overlaySvg(body) },
+    ])
+    .png()
+    .toFile(path.join(outDir, outFile));
+}
+
+async function renderSolid(background, body, outFile) {
+  await sharp(overlaySvg(body, background)).png().toFile(path.join(outDir, outFile));
+}
+
+async function slide01() {
+  await renderImageFull('slide_01.png', `
+    <defs>
+      <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.00)"/>
+        <stop offset="35%" stop-color="rgba(0,0,0,0.08)"/>
+        <stop offset="62%" stop-color="rgba(0,0,0,0.45)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.72)"/>
+      </linearGradient>
+    </defs>
+    <rect width="${W}" height="${H}" fill="url(#cover)"/>
+    ${header(false)}
+    ${textLines(wrap('O GOOGLE AGORA MOSTRA COMO INSTAGRAM, TIKTOK, X E YOUTUBE APARECEM NO SEARCH E DISCOVER.', 48), 540, 940, 28, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
+    ${textLines(['SEU POST VIROU', '[[RESULTADO DE BUSCA]]'], 540, 1060, 96, white, { family: 'Impact, ImpactLocal, Arial Narrow, sans-serif', lineHeight: 92, anchor: 'middle' })}
+    <rect x="344" y="1208" width="392" height="66" rx="33" fill="${green}"/>
+    <text x="540" y="1250" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1.5">O QUE MUDA</text>
+    <g transform="translate(676 1239)" stroke="${white}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <line x1="-14" y1="0" x2="4" y2="0"/>
+      <polyline points="-3 -7,4 0,-3 7"/>
+    </g>
+    ${progress(1, 9, false)}
+  `, 'slide_01.png');
+}
+
+async function slide02() {
+  await renderSplit('slide_02.png', `
+    ${header(false)}
+    <rect x="44" y="322" width="134" height="40" rx="4" fill="${green}"/>
+    <text x="111" y="348" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1">MUDANÇA</text>
+    ${textLines(['O GOOGLE ABRIU', 'UMA NOVA CAMADA', 'DE [[MEDIÇÃO]]'], 44, 448, 54, white, { weight: 800, lineHeight: 58 })}
+    <rect x="44" y="620" width="48" height="3" fill="${green}"/>
+    ${textLines(wrap('Agora dá para acompanhar plataformas sociais no Search Console.', 28), 44, 708, 28, 'rgba(255,255,255,0.88)', { lineHeight: 40 })}
+    ${textLines(wrap('• Instagram, TikTok, X e YouTube entram no radar.', 30), 44, 872, 28, 'rgba(255,255,255,0.88)', { lineHeight: 40 })}
+    ${textLines(wrap('• Não é sobre postar mais. É sobre medir melhor.', 31), 44, 996, 28, 'rgba(255,255,255,0.88)', { lineHeight: 40 })}
+    ${arrow(false)}
+    ${progress(2, 9, false)}
+  `, 'slide_02.png');
+}
+
+async function slide03() {
+  await renderSolid(white, `
+    ${header(true)}
+    <rect x="64" y="286" width="56" height="5" rx="2" fill="${green}"/>
+    ${textLines(wrap('Antes de continuar: Quer mais conteúdos como esse?', 24), 64, 462, 62, dark, { weight: 800, lineHeight: 74 })}
+    ${textLines(wrap('Toca [[2 vezes]] na tela e depois me segue.', 22), 64, 698, 62, dark, { weight: 800, lineHeight: 74 })}
+    ${arrow(true)}
+    ${progress(3, 9, true)}
+  `, 'slide_03.png');
+}
+
+async function slide04() {
+  await renderSolid(white, `
+    ${header(true)}
+    <rect x="64" y="276" width="56" height="4" rx="2" fill="${green}"/>
+    ${textLines(['CURTIDA NÃO CONTA A', '[[HISTÓRIA INTEIRA]]'], 64, 392, 52, dark, { weight: 800, lineHeight: 60 })}
+    <line x1="64" y1="486" x2="1016" y2="486" stroke="rgba(0,0,0,0.10)" stroke-width="1"/>
+    ${textLines(wrap('Um post pode gerar descoberta sem virar like. Pode aparecer numa busca, levar alguém ao perfil, gerar lembrança, DM, WhatsApp ou venda dias depois.', 45), 64, 602, 34, 'rgba(0,0,0,0.72)', { lineHeight: 52 })}
+    <rect x="64" y="868" width="952" height="114" fill="#f5f5f5"/>
+    <rect x="64" y="868" width="5" height="114" fill="${green}"/>
+    ${textLines(wrap('Social media também precisa provar demanda.', 38), 92, 936, 30, dark, { weight: 700, lineHeight: 42 })}
+    ${textLines(wrap('A leitura nova não é só “quanto engajou?”, e sim que intenção esse conteúdo capturou fora da própria rede.', 45), 64, 1088, 34, 'rgba(0,0,0,0.72)', { lineHeight: 52 })}
+    ${arrow(true)}
+    ${progress(4, 9, true)}
+  `, 'slide_04.png');
+}
+
+async function slide05() {
+  await renderTopImage('slide_04.png', `
+    ${header(false)}
+    <rect x="0" y="580" width="${W}" height="${H - 580}" fill="${dark}"/>
+    <rect x="56" y="664" width="60" height="3" rx="2" fill="${green}"/>
+    ${textLines(['O RELATÓRIO MUDA', 'DE [[PERGUNTA]]'], 56, 748, 46, white, { weight: 800, lineHeight: 56 })}
+    <line x1="56" y1="824" x2="1024" y2="824" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    ${textLines(wrap('Antes: “quantas views teve?” Agora: “quais buscas levaram pessoas até esse conteúdo?”', 50), 56, 914, 27, 'rgba(255,255,255,0.78)', { lineHeight: 42 })}
+    ${textLines(wrap('O novo valor está em entender termos, temas e caminhos de descoberta qualificada.', 50), 56, 1092, 27, 'rgba(255,255,255,0.78)', { lineHeight: 42 })}
+    ${arrow(false)}
+    ${progress(5, 9, false)}
+  `, 'slide_05.png');
+}
+
+async function slide06() {
+  await renderImageFull('slide_05.png', `
+    <defs>
+      <linearGradient id="impactA" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.00)"/>
+        <stop offset="30%" stop-color="rgba(0,0,0,0.05)"/>
+        <stop offset="58%" stop-color="rgba(0,0,0,0.55)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.80)"/>
+      </linearGradient>
+    </defs>
+    <rect width="${W}" height="${H}" fill="url(#impactA)"/>
+    ${header(false)}
+    <rect x="64" y="486" width="56" height="4" rx="2" fill="${green}"/>
+    ${textLines(['GOOGLE, SOCIAL E IA', 'ESTÃO VIRANDO O', '[[MESMO JOGO]]'], 64, 602, 56, white, { weight: 700, lineHeight: 64 })}
+    <line x1="64" y1="730" x2="1016" y2="730" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    ${textLines(wrap('Se mecanismos de busca e respostas de IA usam sinais externos para entender marcas, seu conteúdo social vira mais uma superfície de autoridade.', 42), 64, 846, 33, 'rgba(255,255,255,0.82)', { lineHeight: 50 })}
+    ${textLines(wrap('Não é promessa de ranking. É construção de sinal.', 38), 64, 1114, 33, 'rgba(255,255,255,0.82)', { lineHeight: 50 })}
+    ${arrow(false)}
+    ${progress(6, 9, false)}
+  `, 'slide_06.png');
+}
+
+async function slide07() {
+  await renderSplit('slide_06.png', `
+    ${header(false)}
+    <rect x="44" y="322" width="136" height="40" rx="4" fill="${green}"/>
+    <text x="112" y="348" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1">CHECKLIST</text>
+    ${textLines(['CHECKLIST RÁPIDO', 'PARA SUA [[MARCA]]'], 44, 448, 54, white, { weight: 800, lineHeight: 58 })}
+    <rect x="44" y="620" width="48" height="3" fill="${green}"/>
+    ${textLines(wrap('• Seu perfil responde perguntas reais antes da compra?', 28), 44, 708, 28, 'rgba(255,255,255,0.88)', { lineHeight: 44 })}
+    ${textLines(wrap('• Seus posts usam termos que o cliente realmente pesquisa?', 28), 44, 854, 28, 'rgba(255,255,255,0.88)', { lineHeight: 44 })}
+    ${textLines(wrap('• Existe ponte clara para DM, WhatsApp ou página comercial?', 28), 44, 1000, 28, 'rgba(255,255,255,0.88)', { lineHeight: 44 })}
+    ${arrow(false)}
+    ${progress(7, 9, false)}
+  `, 'slide_07.png');
+}
+
+async function slide08() {
+  await renderImageFull('slide_07.png', `
+    <defs>
+      <linearGradient id="impactB" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.00)"/>
+        <stop offset="30%" stop-color="rgba(0,0,0,0.05)"/>
+        <stop offset="58%" stop-color="rgba(0,0,0,0.55)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.80)"/>
+      </linearGradient>
+    </defs>
+    <rect width="${W}" height="${H}" fill="url(#impactB)"/>
+    ${header(false)}
+    <rect x="64" y="472" width="56" height="4" rx="2" fill="${green}"/>
+    ${textLines(['O ERRO É TRATAR', 'SOCIAL COMO', '[[VITRINE SOLTA]]'], 64, 588, 56, white, { weight: 700, lineHeight: 64 })}
+    <line x1="64" y1="716" x2="1016" y2="716" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    ${textLines(wrap('Post sem intenção vira arquivo morto. Conteúdo orientado por pergunta vira ativo: responde dores reais, aparece em mais lugares e alimenta funil.', 42), 64, 832, 33, 'rgba(255,255,255,0.82)', { lineHeight: 50 })}
+    <line x1="64" y1="1098" x2="1016" y2="1098" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+    ${textLines(wrap('Feed bonito sem descoberta é vaidade cara.', 34), 64, 1186, 33, 'rgba(255,255,255,0.82)', { lineHeight: 50 })}
+    ${arrow(false)}
+    ${progress(8, 9, false)}
+  `, 'slide_08.png');
+}
+
+async function slide09() {
+  await renderSolid(white, `
+    ${header(true)}
+    <text x="64" y="560" fill="${dark}" font-family="Georgia, Times New Roman, serif" font-size="72">Eduardo Rolim</text>
+    ${textLines(wrap('[[Comente BUSCA]] para receber um checklist de auditoria de descoberta.', 38), 64, 704, 30, dark, { weight: 700, lineHeight: 46 })}
+    ${textLines(wrap('Fonte: pauta editorial PRI-42 sobre Google Search Console para conteúdos de Instagram, TikTok, X e YouTube.', 56), 64, 900, 18, 'rgba(0,0,0,0.55)', { lineHeight: 30 })}
+    ${progress(9, 9, true)}
+  `, 'slide_09.png');
+}
+
 async function main() {
-  const slides = [
-    {
-      image: 'slide_01.png',
-      eyebrow: 'Nova camada de descoberta',
-      kicker: 'O Google agora mostra quando seu conteudo social vira resultado de busca.',
-      title: ['SEU POST', 'VIROU [[RESULTADO]]', 'DE BUSCA'],
-      cta: 'Entenda o ponto',
-      titleY: 900,
-    },
-    {
-      image: 'slide_02.png',
-      eyebrow: 'O que mudou',
-      kicker: 'Instagram, TikTok, X e YouTube entram no radar do Search Console.',
-      title: ['SOCIAL', 'AGORA TAMBEM', 'E [[BUSCA]]'],
-      cta: 'Veja a virada',
-      titleY: 900,
-    },
-    {
-      image: 'slide_03.png',
-      eyebrow: 'Metrica errada',
-      kicker: 'Curtida e view mostram reacao. Busca mostra intencao.',
-      title: ['CURTIDA', 'NAO CONTA A', '[[HISTORIA]]', 'INTEIRA'],
-      cta: 'Troque a pergunta',
-      titleY: 875,
-    },
-    {
-      image: 'slide_04.png',
-      eyebrow: 'Novo relatorio',
-      kicker: 'A pergunta deixa de ser so quanto engajou.',
-      title: ['QUAIS BUSCAS', 'LEVAM PESSOAS', 'ATE SUA [[MARCA]]?'],
-      cta: 'Olhe desse jeito',
-      titleY: 900,
-    },
-    {
-      image: 'slide_05.png',
-      eyebrow: 'Busca + social + IA',
-      kicker: 'Conteudo social vira superficie de autoridade, descoberta e demanda.',
-      title: ['GOOGLE, SOCIAL', 'E IA VIRARAM', 'O [[MESMO JOGO]]'],
-      cta: 'Conecte os pontos',
-      titleY: 880,
-    },
-    {
-      image: 'slide_06.png',
-      eyebrow: 'Erro comum',
-      kicker: 'Post sem intencao vira arquivo morto no feed.',
-      title: ['FEED BONITO', 'SEM DESCOBERTA', 'E [[VAIDADE]]', 'CARA'],
-      cta: 'Corrija a rota',
-      titleY: 860,
-    },
-    {
-      image: 'slide_07.png',
-      eyebrow: 'Checklist rapido',
-      kicker: 'Audite se seus posts respondem perguntas reais antes da compra.',
-      title: ['SUA MARCA', 'APARECE QUANDO', 'O CLIENTE', '[[PESQUISA]]?'],
-      cta: 'Use o checklist',
-      titleY: 840,
-    },
-    {
-      image: 'slide_08.png',
-      eyebrow: 'Proxima vantagem',
-      kicker: 'Quem conecta social, busca e IA vira mais facil de encontrar.',
-      title: ['A PROXIMA', 'VANTAGEM E SER', '[[ENCONTRADO]]'],
-      cta: 'Comentar busca',
-      titleY: 900,
-    },
-  ];
-
-  for (let index = 0; index < slides.length; index += 1) {
-    await renderPoster({
-      ...slides[index],
-      index: index + 1,
-      outFile: `slide_${String(index + 1).padStart(2, '0')}.png`,
-    });
-  }
-
-  console.log('render complete');
+  await slide01();
+  await slide02();
+  await slide03();
+  await slide04();
+  await slide05();
+  await slide06();
+  await slide07();
+  await slide08();
+  await slide09();
 }
 
 main().catch((error) => {

@@ -10,13 +10,13 @@
 
 ## Entrega finalizada
 
-- Pacote visual final montado em 8 slides, alinhado a pauta de descoberta organica da `PRI-42`.
-- HTML refeito no padrao full-bleed solicitado em comentario de revisao: imagem em tela cheia, topo discreto, headline condensada gigante, palavra-chave em verde e CTA em botao.
-- 8 imagens proprietarias geradas e salvas em `img/`.
-- 8 PNGs finais reexportados em `png/`, formato 1080x1350.
+- Pacote visual final montado em 9 slides, seguindo a sequencia fixa da skill: `slide-capa`, `slide-split`, `slide-mini-cta`, `slide-tipo-c`, `slide-tipo-a`, `slide-tipo-d`, `slide-split`, `slide-tipo-d`, `slide-cta`.
+- HTML refeito no padrao estrutural da skill, com capa full-bleed e variacao de layout obrigatoria por slide.
+- 8 imagens base mantidas em `img/` para os slides com foto.
+- 9 PNGs finais exportados em `png/`, formato 1080x1350.
 - Legenda final salva em `legenda.txt`.
 - Renderizador reprodutivel salvo em `render_pngs.js`, usando `sharp` e fontes locais.
 
 ## Observacao operacional
 
-- Revisao aplicada em 2026-07-08 apos feedback com imagem de referencia `slide_01.png`: o pacote deixou os layouts mistos e passou a usar um sistema unico de poster full-bleed mais proximo da skill visual usada no Claude Code.
+- Revisao aplicada em 2026-07-08 apos comentario de que a versao anterior tinha unificado demais os posts. O pacote voltou a obedecer literalmente a estrutura da skill, redistribuindo a pauta `PRI-42` nos 9 layouts obrigatorios.
