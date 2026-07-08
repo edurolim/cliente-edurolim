@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <title>PRI-43 - Carrossel @oeduardo.1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Regular.otf") format("opentype"); font-weight: 400; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Medium.otf") format("opentype"); font-weight: 500; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-SemiBold.otf") format("opentype"); font-weight: 600; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-Bold.otf") format("opentype"); font-weight: 700; }
+    @font-face { font-family: "Inter"; src: url("fonts/Inter-BoldItalic.otf") format("opentype"); font-weight: 700; font-style: italic; }
+    @font-face { font-family: "ImpactLocal"; src: url("fonts/LiberationSansNarrow-Bold.ttf") format("truetype"); font-weight: 700; }
+
+    :root {
+      --green: #0E9957;
+      --green-soft: #3CD3A4;
+      --dark: #292A25;
+      --black: #111111;
+      --cream: #f4f1eb;
+      --pad-x: 62px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #000; font-family: "Inter", sans-serif; }
+    .slide {
+      width: 1080px;
+      height: 1350px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+    }
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 22px 48px;
+      font: 400 14px "Space Grotesk", sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      z-index: 5;
+    }
+    .header.light { color: rgba(0,0,0,.35); }
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      z-index: 5;
+    }
+    .footer.dark { background: rgba(0,0,0,.45); color: rgba(255,255,255,.82); }
+    .footer.light { background: rgba(255,255,255,.82); color: rgba(0,0,0,.45); }
+    .footer-user { display: flex; gap: 12px; align-items: center; }
+    .footer-dot { width: 20px; height: 20px; border: 2px solid currentColor; border-radius: 50%; position: relative; }
+    .footer-dot::after { content: ""; width: 6px; height: 6px; background: currentColor; border-radius: 50%; position: absolute; inset: 5px; }
+    .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: rgba(255,255,255,.14); z-index: 6; }
+    .progress.light { background: rgba(0,0,0,.08); }
+    .progress > span { display: block; height: 100%; background: var(--green); }
+    .impact {
+      font-family: Impact, "ImpactLocal", "Arial Narrow", sans-serif;
+      text-transform: uppercase;
+      line-height: .96;
+      letter-spacing: .4px;
+    }
+    .hl { color: var(--green); font-style: italic; font-weight: 700; }
+    .cover-content {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      bottom: 88px;
+      color: #fff;
+      z-index: 4;
+    }
+    .branding {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 26px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .branding::before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 4px transparent;
+      background:
+        radial-gradient(circle at center, #fff 0 3px, transparent 4px);
+    }
+    .cover-title { font-size: 88px; max-width: 760px; text-shadow: 0 10px 32px rgba(0,0,0,.55); }
+    .cover-sub { margin-top: 22px; max-width: 620px; font-size: 28px; line-height: 1.4; color: rgba(255,255,255,.9); }
+    .pill {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 18px 30px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 610px 470px;
+      background: var(--dark);
+      color: #fff;
+    }
+    .split-copy { padding: 220px var(--pad-x) 90px; }
+    .eyebrow {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.08);
+      color: var(--green-soft);
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+    .eyebrow.solid { background: var(--green); color: #fff; }
+    .title { margin-top: 24px; font-size: 58px; line-height: 1.06; font-weight: 800; }
+    .body { margin-top: 26px; font-size: 31px; line-height: 1.42; color: rgba(255,255,255,.88); }
+    .quote {
+      margin-top: 42px;
+      padding: 28px 28px 28px 34px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border-left: 8px solid var(--green);
+      font-size: 34px;
+      line-height: 1.38;
+      font-weight: 700;
+    }
+    .split-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .card-slide { background: #fff; color: var(--black); }
+    .card {
+      position: absolute;
+      inset: 186px 70px 184px;
+      border-radius: 26px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .card::before { content: ""; display: block; height: 16px; background: var(--green); }
+    .card-inner { padding: 48px; }
+    .card-title { font-size: 62px; line-height: 1.08; font-weight: 800; }
+    .card-body { margin-top: 30px; font-size: 32px; line-height: 1.45; color: rgba(0,0,0,.74); }
+    .card-quote {
+      margin-top: 44px;
+      padding: 36px 42px;
+      border-radius: 14px;
+      background: var(--green);
+      color: #fff;
+      font-size: 44px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    .top-photo { background: var(--dark); color: #fff; }
+    .top-photo img { width: 100%; height: 505px; object-fit: cover; display: block; }
+    .section { padding: 118px 62px 0; }
+    .section.light { background: #fff; color: var(--black); height: 845px; }
+    .section-title { font-size: 58px; font-weight: 800; line-height: 1.08; }
+    .section-copy { margin-top: 28px; font-size: 31px; line-height: 1.42; color: rgba(255,255,255,.86); }
+    .section-copy.light { color: rgba(0,0,0,.78); }
+    .bullets { margin-top: 42px; display: grid; gap: 18px; font-size: 28px; line-height: 1.44; }
+    .impact-bg { color: #fff; }
+    .impact-bg .cover-title { max-width: 780px; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <img class="bg" src="img/slide_01.png" alt="">
+    <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.18) 35%,rgba(0,0,0,.56) 68%,rgba(0,0,0,.82) 100%);"></div>
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="cover-content">
+      <div class="branding">@oeduardo.1</div>
+      <h1 class="cover-title impact">Seu post virou <span class="hl">resultado de busca</span></h1>
+      <p class="cover-sub">O Google agora mostra como Instagram, TikTok, X e YouTube aparecem no Search e Discover.</p>
+      <div class="pill">O que muda agora →</div>
+    </div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div></div>
+    <div class="progress"><span style="width:12.5%"></span></div>
+  </section>
+
+  <section class="slide split">
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="split-copy">
+      <div class="eyebrow solid">O que mudou</div>
+      <h2 class="title">O Google abriu uma nova camada de <span class="hl">medicao</span></h2>
+      <p class="body">Agora marcas e criadores conseguem acompanhar propriedades de plataformas sociais no Search Console.</p>
+      <p class="quote">Nao e sobre postar mais. E sobre medir melhor.</p>
+    </div>
+    <div class="split-photo"><img src="img/slide_02.png" alt=""></div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>1/7</span></div>
+    <div class="progress"><span style="width:25%"></span></div>
+  </section>
+
+  <section class="slide card-slide">
+    <div class="header light"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="card">
+      <div class="card-inner">
+        <h2 class="card-title">Curtida nao conta a <span class="hl">historia inteira</span></h2>
+        <p class="card-body">Um post pode gerar descoberta sem virar like. Pode aparecer numa busca, levar alguem ao perfil e acionar lembranca, DM, WhatsApp ou venda dias depois.</p>
+        <p class="card-quote">Social media tambem precisa provar demanda.</p>
+      </div>
+    </div>
+    <div class="footer light"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>2/7</span></div>
+    <div class="progress light"><span style="width:37.5%"></span></div>
+  </section>
+
+  <section class="slide top-photo">
+    <img src="img/slide_04.png" alt="">
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="section">
+      <h2 class="section-title">O relatorio muda de <span class="hl">pergunta</span></h2>
+      <p class="section-copy">Antes: "quantas views teve?"<br>Agora: "quais buscas levaram pessoas ate esse conteudo?"</p>
+      <div class="bullets">
+        <p>• Quais termos puxam meu perfil?</p>
+        <p>• Quais posts aparecem no Google?</p>
+        <p>• Quais temas geram descoberta qualificada?</p>
+        <p>• Que duvidas viram pauta de conteudo?</p>
+      </div>
+    </div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>3/7</span></div>
+    <div class="progress"><span style="width:50%"></span></div>
+  </section>
+
+  <section class="slide impact-bg">
+    <img class="bg" src="img/slide_05.png" alt="">
+    <div class="overlay" style="background:linear-gradient(180deg,rgba(14,153,87,.16) 0%,rgba(8,18,15,.38) 46%,rgba(8,18,15,.86) 100%);"></div>
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="cover-content">
+      <div class="eyebrow" style="background:rgba(14,153,87,.22);border:1px solid rgba(60,211,164,.48)">Busca + social + IA search</div>
+      <h2 class="cover-title impact">Google, social e IA estao virando o <span class="hl">mesmo jogo</span></h2>
+      <p class="cover-sub">Seu conteudo social vira mais uma superficie de autoridade e descoberta.</p>
+    </div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>4/7</span></div>
+    <div class="progress"><span style="width:62.5%"></span></div>
+  </section>
+
+  <section class="slide split">
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="split-copy">
+      <div class="eyebrow">Erro comum</div>
+      <h2 class="title">O erro e tratar social como <span class="hl">vitrine solta</span></h2>
+      <p class="body">Post sem intencao vira arquivo morto. Conteudo orientado por pergunta vira ativo: responde dores reais, aparece em mais lugares e alimenta funil.</p>
+      <p class="quote" style="background:var(--green);border-left:none;font-size:30px;line-height:1.28">Feed bonito sem descoberta e vaidade cara.</p>
+    </div>
+    <div class="split-photo"><img src="img/slide_06.png" alt=""></div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>5/7</span></div>
+    <div class="progress"><span style="width:75%"></span></div>
+  </section>
+
+  <section class="slide top-photo" style="background:#fff;color:var(--black);">
+    <img src="img/slide_07.png" alt="">
+    <div class="header light"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="section light">
+      <h2 class="section-title">Checklist rapido para sua <span class="hl">marca</span></h2>
+      <div class="bullets" style="color:rgba(0,0,0,.78)">
+        <p>• Quais perguntas seus clientes fazem antes de comprar?</p>
+        <p>• Seu perfil responde essas perguntas com clareza?</p>
+        <p>• Seus posts usam termos que o cliente realmente pesquisa?</p>
+        <p>• Voce mede descoberta fora da plataforma?</p>
+        <p>• Existe ponte clara para DM, WhatsApp ou pagina comercial?</p>
+      </div>
+    </div>
+    <div class="footer light"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>6/7</span></div>
+    <div class="progress light"><span style="width:87.5%"></span></div>
+  </section>
+
+  <section class="slide">
+    <img class="bg" src="img/slide_08.png" alt="">
+    <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.28) 40%,rgba(0,0,0,.82) 100%);"></div>
+    <div class="header"><span>Powered by Postlab</span><span>@oeduardo.1</span><span>Julho 2026 ®</span></div>
+    <div class="cover-content">
+      <h2 class="cover-title impact">A proxima vantagem e ser <span class="hl">encontrado</span></h2>
+      <p class="cover-sub">Comente BUSCA para receber um checklist de auditoria de descoberta.</p>
+      <div class="pill">Comentar busca</div>
+    </div>
+    <div class="footer dark"><div class="footer-user"><span class="footer-dot"></span><span>@oeduardo.1</span></div><span>7/7</span></div>
+    <div class="progress"><span style="width:100%"></span></div>
+  </section>
+</body>
+</html>
