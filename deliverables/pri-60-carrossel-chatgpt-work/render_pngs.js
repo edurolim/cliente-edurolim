@@ -52,9 +52,20 @@ function textLines(lines, x, y, size, fill, options = {}) {
   const weight = options.weight || 400;
   const anchor = options.anchor || 'start';
   const opacity = options.opacity == null ? 1 : options.opacity;
+  const stroke = options.stroke ? ` stroke="${options.stroke}" stroke-width="${options.strokeWidth || 1}" stroke-linejoin="round" paint-order="stroke fill"` : '';
   return lines.map((line, index) => (
-    `<text x="${x}" y="${y + index * lineHeight}" fill="${fill}" fill-opacity="${opacity}" font-family="${family}" font-size="${size}" font-weight="${weight}" text-anchor="${anchor}">${richLine(line)}</text>`
+    `<text x="${x}" y="${y + index * lineHeight}" fill="${fill}" fill-opacity="${opacity}"${stroke} font-family="${family}" font-size="${size}" font-weight="${weight}" text-anchor="${anchor}">${richLine(line)}</text>`
   )).join('\n');
+}
+
+function coverTitle(lines, x, y, size, options = {}) {
+  const lineHeight = options.lineHeight || Math.round(size * 0.92);
+  return lines.map((line, index) => {
+    const isGreen = line.includes('[[');
+    const clean = line.replace(/\[\[|\]\]/g, '');
+    const fill = isGreen ? green : white;
+    return `<text x="${x}" y="${y + index * lineHeight}" fill="${fill}" stroke="${fill}" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" font-family="ImpactLocal, Impact, Arial Narrow, sans-serif" font-size="${size}" font-weight="900" text-anchor="middle">${esc(clean)}</text>`;
+  }).join('\n');
 }
 
 function header(light = false) {
@@ -143,8 +154,8 @@ async function slide01() {
     </defs>
     <rect width="${W}" height="${H}" fill="url(#cover)"/>
     ${header(false)}
-    ${textLines(wrap('09/07/2026: A OPENAI LANÇOU O CHATGPT WORK. O RECADO É SIMPLES: A IA SAIU DO CHAT E ENTROU NO WORKFLOW.', 44), 540, 818, 28, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
-    ${textLines(['PROMPT É PEDIDO.', '[[WORKFLOW]]', 'É SISTEMA.'], 540, 1024, 94, white, { family: 'ImpactLocal, Impact, Arial Narrow, sans-serif', weight: 700, lineHeight: 86, anchor: 'middle' })}
+    ${textLines(wrap('09/07/2026: A OPENAI LANÇOU O CHATGPT WORK. O RECADO É SIMPLES: A IA SAIU DO CHAT E ENTROU NO WORKFLOW.', 44), 540, 812, 30, white, { weight: 900, lineHeight: 41, anchor: 'middle', stroke: white, strokeWidth: 0.8 })}
+    ${coverTitle(['PROMPT É PEDIDO.', '[[WORKFLOW]]', 'É SISTEMA.'], 540, 1024, 96, { lineHeight: 86 })}
     <rect x="336" y="1236" width="408" height="62" rx="31" fill="${green}"/>
     <text x="540" y="1276" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1.5">ENTENDA O JOGO</text>
     <g transform="translate(710 1265)" stroke="${white}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
