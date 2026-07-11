@@ -143,11 +143,11 @@ async function slide01() {
     </defs>
     <rect width="${W}" height="${H}" fill="url(#cover)"/>
     ${header(false)}
-    ${textLines(wrap('09/07/2026: A OPENAI LANÇOU O CHATGPT WORK. O RECADO É SIMPLES: A IA SAIU DO CHAT E ENTROU NO WORKFLOW.', 44), 540, 858, 28, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
-    ${textLines(['PROMPT É PEDIDO.', '[[WORKFLOW]]', 'É SISTEMA.'], 540, 1000, 84, white, { family: 'Impact, ImpactLocal, Arial Narrow, sans-serif', lineHeight: 82, anchor: 'middle' })}
-    <rect x="336" y="1220" width="408" height="62" rx="31" fill="${green}"/>
-    <text x="540" y="1260" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1.5">ENTENDA O JOGO</text>
-    <g transform="translate(710 1249)" stroke="${white}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    ${textLines(wrap('09/07/2026: A OPENAI LANÇOU O CHATGPT WORK. O RECADO É SIMPLES: A IA SAIU DO CHAT E ENTROU NO WORKFLOW.', 44), 540, 818, 28, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
+    ${textLines(['PROMPT É PEDIDO.', '[[WORKFLOW]]', 'É SISTEMA.'], 540, 1024, 94, white, { family: 'ImpactLocal, Impact, Arial Narrow, sans-serif', weight: 700, lineHeight: 86, anchor: 'middle' })}
+    <rect x="336" y="1236" width="408" height="62" rx="31" fill="${green}"/>
+    <text x="540" y="1276" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1.5">ENTENDA O JOGO</text>
+    <g transform="translate(710 1265)" stroke="${white}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
       <line x1="-14" y1="0" x2="4" y2="0"/>
       <polyline points="-3 -7,4 0,-3 7"/>
     </g>
