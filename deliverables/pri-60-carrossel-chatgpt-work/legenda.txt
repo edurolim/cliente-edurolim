@@ -1,0 +1,23 @@
+[LEGENDA]
+Prompt ajuda tarefa.
+
+Workflow muda operação.
+
+A OpenAI apresentou o ChatGPT Work em 09/07/2026. O ponto comercial não é “mais um modelo melhor”.
+
+É o reposicionamento da IA como agente de trabalho capaz de agir em apps e arquivos, ficar em projetos por horas e gerar entregáveis como docs, planilhas, slides, sites e materiais de campanha.
+
+Isso muda marketing e vendas porque pesquisa pode virar brief, brief pode virar criativo, CRM pode revelar follow-up quebrado e dashboard pode orientar a próxima ação no mesmo fluxo.
+
+O erro agora é jogar IA dentro do time sem entrada clara, dado confiável, regra, limite, dono, aprovação humana e métrica de negócio.
+
+Sem processo, automação só acelera desorganização.
+
+Com processo, IA vira sistema.
+
+Comente `WORKFLOW` para mapear uma rotina repetitiva que pode virar fluxo medido com IA.
+
+Fontes: Pesquisa diária IA PRI-57, OpenAI ChatGPT Work e GPT-5.6 publicados em 09 de julho de 2026, e case Deutsche Telekom publicado em 10 de julho de 2026.
+
+[HASHTAGS]
+#chatgptwork #gpt56 #workflow #inteligenciaartificial #automacao #marketingdigital #vendas #crm #growth
