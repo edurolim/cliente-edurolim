@@ -27,4 +27,20 @@
 
 - Status da revisão: `PENDENTE`
 - Revisor alvo: `Revisor de Carrossel e Layout`
+- Reviewer id: `6e0fcb4e-e2e8-48c9-a9e4-60ac05859f62`
 - Gate obrigatório antes de encerrar a entrega visual.
+
+## Handoff de revisão
+
+- Pacote a revisar: `deliverables/pri-68-carrossel-openai-northslope/`
+- HTML final: `deliverables/pri-68-carrossel-openai-northslope/carrossel.html`
+- PNGs finais: `deliverables/pri-68-carrossel-openai-northslope/png/slide_01.png` a `slide_09.png`
+- Legenda: `deliverables/pri-68-carrossel-openai-northslope/legenda.txt`
+- Checklist-base: `deliverables/pri-48-checklist-revisor-layout.md`
+- Commit local do pacote: `aa66b7e76dd5dd917dd04d732c18dc64065c563d`
+- Resultado esperado do gate: marcar `APROVADO` ou `REPROVADO`, citando slide afetado e ajuste pedido se houver retrabalho.
+
+## Restrição operacional
+
+- Nesta sessao nao ha ferramenta conectada para comentar a issue, anexar work product ou mover o card para `in_review`.
+- O proximo passo operacional depende de um owner com acesso ao fluxo Paperclip para encaminhar o pacote ao revisor acima e registrar o status da issue.
