@@ -38,9 +38,12 @@
 - Legenda: `deliverables/pri-68-carrossel-openai-northslope/legenda.txt`
 - Checklist-base: `deliverables/pri-48-checklist-revisor-layout.md`
 - Commit local do pacote: `aa66b7e76dd5dd917dd04d732c18dc64065c563d`
+- Commit do handoff de revisao: `418abedc6dd08a90e6198a216c99eb6dc683408f`
 - Resultado esperado do gate: marcar `APROVADO` ou `REPROVADO`, citando slide afetado e ajuste pedido se houver retrabalho.
 
 ## Restrição operacional
 
 - Nesta sessao nao ha ferramenta conectada para comentar a issue, anexar work product ou mover o card para `in_review`.
-- O proximo passo operacional depende de um owner com acesso ao fluxo Paperclip para encaminhar o pacote ao revisor acima e registrar o status da issue.
+- O diagnostico posterior em `deliverables/pri-69-review-productivity-pri-68.md` confirmou uma tentativa bloqueada por autorizacao: `403 Issue is outside this actor's authorization boundary`.
+- O erro de adapter/modelo (`gpt-5.3-codex-spark` incompatível com conta ChatGPT) nao altera o estado real do entregavel; ele ja esta pronto para revisao.
+- O proximo passo operacional depende de um owner com acesso ao fluxo Paperclip para encaminhar o pacote ao revisor acima e registrar a issue como `in_review`.
