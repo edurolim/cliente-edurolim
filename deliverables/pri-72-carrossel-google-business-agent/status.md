@@ -37,3 +37,10 @@
 - PNGs finais: `deliverables/pri-72-carrossel-google-business-agent/png/slide_01.png` a `slide_09.png`
 - Legenda: `deliverables/pri-72-carrossel-google-business-agent/legenda.txt`
 - Resultado esperado do gate: marcar `APROVADO` ou `REPROVADO`, citando slide afetado e ajuste pedido se houver retrabalho.
+
+## Git
+
+- Branch local: `main`
+- Commit local do pacote: `08d8d85`
+- Repositório: `https://github.com/edurolim/cliente-edurolim`
+- Push remoto: `PENDENTE` nesta sessão por falta de credencial Git no runtime (`fatal: could not read Username for 'https://github.com': No such device or address`)
