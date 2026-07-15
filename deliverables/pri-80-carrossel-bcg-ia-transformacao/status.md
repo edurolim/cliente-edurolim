@@ -29,7 +29,7 @@
 
 ## Revisão de layout
 
-- Status da revisão: `PENDENTE`
+- Status da revisão: `IN_REVIEW`
 - Revisor alvo: `Revisor de Carrossel e Layout`
 - Reviewer id: `6e0fcb4e-e2e8-48c9-a9e4-60ac05859f62`
 - Gate obrigatório antes de marcar a issue como `done`.
@@ -47,11 +47,13 @@
 ## Gate de encerramento
 
 - O erro de adapter/modelo (`gpt-5` incompatível com conta ChatGPT no Codex local) não altera o estado real do entregável; o pacote visual segue pronto para revisão.
-- O fechamento correto desta issue passa por work product na task, handoff ao `Revisor de Carrossel e Layout` (`6e0fcb4e-e2e8-48c9-a9e4-60ac05859f62`) e status `in_review` enquanto a aprovação estiver pendente.
+- O work product principal da PRI-80 aponta para este arquivo `status.md` dentro do pacote final.
+- O handoff foi registrado na issue PRI-80 com interação pendente de confirmação e owner operacional no `Revisor de Carrossel e Layout` (`6e0fcb4e-e2e8-48c9-a9e4-60ac05859f62`).
+- Enquanto a aprovação estiver pendente, a issue correta permanece em `in_review`.
 
 ## Git
 
 - Branch local: `main`
-- Commit local do pacote: `PENDENTE`
+- Commit local do pacote: `PUBLICADO`
 - Repositório: `https://github.com/edurolim/cliente-edurolim`
-- Push remoto: `PENDENTE`
+- Push remoto: `PUBLICADO` em `origin/main`
