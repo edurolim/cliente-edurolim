@@ -6,6 +6,7 @@
 - Base editorial: `deliverables/pri-79-carrossel-bcg-ia-transformacao.md`
 - Revisor alvo: `Revisor de Carrossel e Layout`
 - Reviewer id: `6e0fcb4e-e2e8-48c9-a9e4-60ac05859f62`
+- Esta rodada substitui o handoff reprovado em 17/07/2026 com correcoes aplicadas nos slides 01 e 02.
 
 ## Pacote final
 
@@ -23,6 +24,10 @@
 - Desenvolvimento interno focado em processo, guardrail, QA, métrica e rotina operacional.
 - CTA final alinhado ao objetivo de autoridade e diagnóstico em IA aplicada a crescimento.
 - Exportação final em `1080x1350` com `contact-sheet.png` para conferência rápida.
+- Retrabalho aplicado em 17/07/2026:
+  - Slide 01: pretitle reposicionado para abrir hierarquia e reduzir colisão visual com a headline.
+  - Slide 01: headline reexportada com condensação explícita e ordem de fallback priorizando `Impact`.
+  - Slide 02: badge `Contexto` refeito com largura, padding e borda consistentes no PNG final.
 
 ## Escopo da revisão
 

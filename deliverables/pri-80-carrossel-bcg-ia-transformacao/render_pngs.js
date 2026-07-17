@@ -65,12 +65,17 @@ function textLines(lines, x, y, size, fill, options = {}) {
 
 function coverTitle(lines, x, y, size, options = {}) {
   const lineHeight = options.lineHeight || Math.round(size * 0.92);
+  const scaleX = options.scaleX || 1;
   return lines
     .map((line, index) => {
       const isGreen = line.includes('[[');
       const clean = line.replace(/\[\[|\]\]/g, '');
       const fill = isGreen ? green : white;
-      return `<text x="${x}" y="${y + index * lineHeight}" fill="${fill}" stroke="${fill}" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" font-family="ImpactLocal, Impact, Arial Narrow, sans-serif" font-size="${size}" font-weight="900" text-anchor="middle">${esc(clean)}</text>`;
+      const baseline = y + index * lineHeight;
+      return `
+        <g transform="translate(${x} ${baseline}) scale(${scaleX} 1) translate(${-x} ${-baseline})">
+          <text x="${x}" y="${baseline}" fill="${fill}" stroke="${fill}" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" font-family="Impact, ImpactLocal, Arial Narrow, sans-serif" font-size="${size}" font-weight="900" text-anchor="middle">${esc(clean)}</text>
+        </g>`;
     })
     .join('\n');
 }
@@ -163,8 +168,8 @@ async function slide01() {
     </defs>
     <rect width="${W}" height="${H}" fill="url(#cover)"/>
     ${header(false)}
-    ${textLines(wrap('BCG expôs um gap em 15/07/2026: marketing investe em IA, mas segue sem transformar piloto em operação real.', 34), 540, 804, 28, white, { weight: 900, lineHeight: 39, anchor: 'middle', stroke: white, strokeWidth: 0.8 })}
-    ${coverTitle(['O ERRO NÃO É', 'TESTAR IA.', 'É CHAMAR TESTE', 'DE [[TRANSFORMAÇÃO]].'], 540, 956, 82, { lineHeight: 76 })}
+    ${textLines(wrap('BCG expôs um gap em 15/07/2026: marketing investe em IA, mas segue sem transformar piloto em operação real.', 31), 540, 760, 27, white, { weight: 900, lineHeight: 38, anchor: 'middle', stroke: white, strokeWidth: 0.8 })}
+    ${coverTitle(['O ERRO NÃO É', 'TESTAR IA.', 'É CHAMAR TESTE', 'DE [[TRANSFORMAÇÃO]].'], 540, 958, 80, { lineHeight: 78, scaleX: 0.84 })}
     <rect x="334" y="1236" width="412" height="62" rx="31" fill="${green}"/>
     <text x="540" y="1276" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1.5">VEJA O GAP</text>
     <g transform="translate(696 1265)" stroke="${white}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
@@ -182,8 +187,8 @@ async function slide02() {
     'slide_02.jpg',
     `
     ${header(false)}
-    <rect x="44" y="322" width="124" height="40" rx="4" fill="${green}"/>
-    <text x="112" y="348" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1">CONTEXTO</text>
+    <rect x="44" y="318" width="152" height="44" rx="6" fill="${green}"/>
+    <text x="120" y="347" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" letter-spacing="1">CONTEXTO</text>
     ${textLines(['MUITA EMPRESA', 'TESTA E CHAMA', 'ISSO DE [[VIRADA]].'], 44, 430, 54, white, { weight: 800, lineHeight: 58 })}
     <rect x="44" y="620" width="48" height="3" fill="${green}"/>
     ${textLines(wrap('• Piloto é demo bonita, ferramenta nova e apresentação para a diretoria.', 30), 44, 700, 28, 'rgba(255,255,255,0.88)', { lineHeight: 44 })}
