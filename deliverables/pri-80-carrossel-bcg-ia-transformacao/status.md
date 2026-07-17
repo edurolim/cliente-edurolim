@@ -58,6 +58,6 @@
 ## Git
 
 - Branch local: `main`
-- Commit local do pacote: `PENDENTE ATE APROVACAO DO GATE`
+- Commit local do pacote: `PUBLICADO COMO REVIEW CANDIDATE`
 - Repositório: `https://github.com/edurolim/cliente-edurolim`
-- Push remoto: `PENDENTE ATE APROVACAO DO GATE`
+- Push remoto: `PUBLICADO EM origin/main`
