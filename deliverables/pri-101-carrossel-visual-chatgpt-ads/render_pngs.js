@@ -111,8 +111,8 @@ async function slide01() {
       <rect x="300" y="906" width="430" height="14" rx="7" fill="rgba(255,255,255,0.30)"/><rect x="300" y="954" width="360" height="14" rx="7" fill="rgba(255,255,255,0.30)"/><rect x="300" y="1002" width="430" height="14" rx="7" fill="rgba(255,255,255,0.30)"/>
     </g>
     ${header(false)}
-    ${text(wrap('Todo mundo quer aparecer nas respostas. Mas anuncio dentro da IA muda a pergunta.', 35), 540, 826, 29, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
-    ${text(['CHATGPT ADS', 'NAO E GOOGLE ADS', 'COM OUTRO NOME'], 540, 1010, 82, white, { family: 'ImpactLocal, Impact, Arial Narrow, sans-serif', weight: 900, lineHeight: 78, anchor: 'middle' })}
+    ${text(wrap('Todo mundo quer aparecer nas respostas. Mas anúncio dentro da IA muda a pergunta.', 35), 540, 826, 29, white, { weight: 800, lineHeight: 40, anchor: 'middle' })}
+    ${text(['CHATGPT ADS', 'NÃO É GOOGLE ADS', 'COM OUTRO NOME'], 540, 1010, 82, white, { family: 'ImpactLocal, Impact, Arial Narrow, sans-serif', weight: 900, lineHeight: 78, anchor: 'middle' })}
     ${progress(1, 7, false)}
   `);
 }
@@ -127,10 +127,10 @@ async function slide02() {
     <rect x="644" y="536" width="210" height="80" rx="18" fill="rgba(255,255,255,0.12)"/>
     <rect x="644" y="648" width="270" height="80" rx="18" fill="rgba(255,255,255,0.12)"/>
     <rect x="44" y="322" width="94" height="40" rx="4" fill="${green}"/><text x="91" y="349" fill="${white}" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800" text-anchor="middle">ERRO</text>
-    ${text(['A TENTACAO E', 'TRATAR COMO', '[[MIDIA COMUM]].'], 44, 440, 55, white, { weight: 800, lineHeight: 61 })}
+    ${text(['A TENTAÇÃO É', 'TRATAR COMO', '[[MÍDIA COMUM]].'], 44, 440, 55, white, { weight: 800, lineHeight: 61 })}
     ${rule(44, 642)}
-    ${text(wrap('Mesmo painel mental. Mesma logica de campanha. Mesmo raciocinio de clique.', 29), 44, 732, 30, 'rgba(255,255,255,0.78)', { lineHeight: 45 })}
-    ${panel(wrap('So que a conversa com IA nao nasce no mesmo momento de compra.', 29), 44, 1015, 420, false)}
+    ${text(wrap('Mesmo painel mental. Mesma lógica de campanha. Mesmo raciocínio de clique.', 29), 44, 732, 30, 'rgba(255,255,255,0.78)', { lineHeight: 45 })}
+    ${panel(wrap('Só que a conversa com IA não nasce no mesmo momento de compra.', 29), 44, 1015, 420, false)}
     ${number(2, 7, false)}${progress(2, 7, false)}
   `);
 }
@@ -156,7 +156,7 @@ async function slide07() {
     ${header(true)}
     ${text(['Eduardo Rolim'], 64, 392, 72, dark, { family: 'Georgia, Times New Roman, serif', weight: 400 })}
     ${rule(64, 468)}
-    ${text(wrap('ChatGPT Ads parece mais oportunidade, risco ou distracao para empresas brasileiras agora?', 26), 64, 610, 48, dark, { weight: 800, lineHeight: 61 })}
+    ${text(wrap('ChatGPT Ads parece mais oportunidade, risco ou distração para empresas brasileiras agora?', 26), 64, 610, 48, dark, { weight: 800, lineHeight: 61 })}
     ${text(wrap('Fontes-base do insumo: Business Insider, EMARKETER, Search Engine Land, OpenAI Ads e comunicados da OpenAI consultados em 21/07/2026.', 78), 64, 1074, 18, 'rgba(0,0,0,0.55)', { lineHeight: 28 })}
     ${number(7, 7, true)}${progress(7, 7, true)}
   `, white);
@@ -180,10 +180,10 @@ async function contactSheet() {
 async function main() {
   await slide01();
   await slide02();
-  await standard('slide_03.png', 3, true, 'Busca, social e IA vendem momentos diferentes.', 'Busca vende intencao declarada. Social vende interrupcao e descoberta. IA conversacional intermedia criterio, comparacao e recomendacao.', 'O usuario nao esta apenas clicando. Esta pedindo criterio.');
-  await standard('slide_04.png', 4, false, 'OpenAI quer anuncios. O mercado quer [[prova]].', 'A OpenAI quer transformar o ChatGPT em plataforma relevante de anuncios. Analistas ainda questionam escala, targeting, mensuracao e maturidade do formato.', 'A ambicao e grande. A maquina comercial ainda esta em construcao.', 'Contradicao');
-  await standard('slide_05.png', 5, true, 'Antes da verba, vem o mapa de perguntas.', 'Quais perguntas comerciais a IA esta intermediando? Quando a marca aparece? Que prova sustenta a decisao depois da resposta?', 'Sem isso, o anuncio entra em uma conversa que a empresa ainda nao entendeu.');
-  await standard('slide_06.png', 6, false, 'O teste minimo tem 5 pecas.', 'Perguntas BOFU. Presenca organica. Landing page de comparacao. Criativos por objecao. Tracking para separar curiosidade, assistencia e conversao.', 'O risco nao e chegar tarde. E entrar cedo com a estrategia errada.', 'Checklist');
+  await standard('slide_03.png', 3, true, 'Busca, social e IA vendem momentos diferentes.', 'Busca vende intenção declarada. Social vende interrupção e descoberta. IA conversacional intermedia critério, comparação e recomendação.', 'O usuário não está apenas clicando. Está pedindo critério.');
+  await standard('slide_04.png', 4, false, 'OpenAI quer anúncios. O mercado quer [[prova]].', 'A OpenAI quer transformar o ChatGPT em plataforma relevante de anúncios. Analistas ainda questionam escala, targeting, mensuração e maturidade do formato.', 'A ambição é grande. A máquina comercial ainda está em construção.', 'Contradição');
+  await standard('slide_05.png', 5, true, 'Antes da verba, vem o mapa de perguntas.', 'Quais perguntas comerciais a IA está intermediando? Quando a marca aparece? Que prova sustenta a decisão depois da resposta?', 'Sem isso, o anúncio entra em uma conversa que a empresa ainda não entendeu.');
+  await standard('slide_06.png', 6, false, 'O teste mínimo tem 5 peças.', 'Perguntas BOFU. Presença orgânica. Landing page de comparação. Criativos por objeção. Tracking para separar curiosidade, assistência e conversão.', 'O risco não é chegar tarde. É entrar cedo com a estratégia errada.', 'Checklist');
   await slide07();
   await contactSheet();
 }

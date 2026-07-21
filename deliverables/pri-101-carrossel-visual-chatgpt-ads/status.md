@@ -10,6 +10,7 @@
   - `render_pngs.js`
   - `legenda.txt`
   - `review-request.md`
+  - `review-result.md`
   - `png/`
 
 ## Estado atual
@@ -20,14 +21,15 @@
 - Objetivo inferido: autoridade, salvamentos e comentarios qualificados.
 - CTA definido: comentario de opiniao.
 - Conteudo distribuido em 7 slides para preservar ritmo e evitar slide de enchimento.
-- Capa focada na tese central: ChatGPT Ads nao e Google Ads com outro nome.
+- Capa focada na tese central: ChatGPT Ads não é Google Ads com outro nome.
 - Slide 2 diferencia busca, social e IA conversacional.
-- Slide 3 mostra que o jogo muda porque a IA intermedia criterio, comparacao e recomendacao.
-- Slide 4 apresenta a contradicao OpenAI x mercado: ambicao alta, maturidade ainda em construcao.
+- Slide 3 mostra que o jogo muda porque a IA intermedia critério, comparação e recomendação.
+- Slide 4 apresenta a contradição OpenAI x mercado: ambição alta, maturidade ainda em construção.
 - Slide 5 transforma a pauta em checklist operacional antes de investir.
-- Slide 6 fecha o risco estrategico: entrar cedo com logica errada.
-- CTA final pergunta se ChatGPT Ads parece oportunidade, risco ou distracao para empresas brasileiras agora.
-- PNGs `slide_01.png` a `slide_07.png` e `contact-sheet.png` exportados localmente em `1080x1350`.
+- Slide 6 fecha o risco estratégico: entrar cedo com lógica errada.
+- CTA final pergunta se ChatGPT Ads parece mais oportunidade, risco ou distração para empresas brasileiras agora.
+- Acentuação PT-BR corrigida no HTML, no render e na legenda antes da exportação final.
+- PNGs `slide_01.png` a `slide_07.png` exportados localmente em `1080x1350`; `contact-sheet.png` exportado em `1080x1014`.
 
 ## Revisao de layout
 
@@ -37,6 +39,12 @@
 - Pedido de revisao registrado localmente em `review-request.md`.
 - Resultado registrado em `review-result.md`.
 - Gate obrigatorio concluido em 21/07/2026.
+- Este pacote aprovado substitui o pacote anterior reprovado em `deliverables/pri-100-carrossel-chatgpt-ads-feedmaker/` para o fechamento do gate de ChatGPT Ads.
+
+## Restricao operacional
+
+- Nesta sessao nao ha ferramenta Paperclip exposta para comentar a issue, anexar work product ou mover o card diretamente no board.
+- O pacote pode ser commitado e enviado ao GitHub, mas a atualizacao final da issue fonte ainda depende de um owner com acesso operacional ao fluxo Paperclip.
 
 ## Git
 
