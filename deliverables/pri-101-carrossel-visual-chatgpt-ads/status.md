@@ -44,11 +44,12 @@
 ## Restricao operacional
 
 - Nesta sessao nao ha ferramenta Paperclip exposta para comentar a issue, anexar work product ou mover o card diretamente no board.
-- O pacote pode ser commitado e enviado ao GitHub, mas a atualizacao final da issue fonte ainda depende de um owner com acesso operacional ao fluxo Paperclip.
+- A atualizacao final da issue fonte ainda depende de um owner com acesso operacional ao fluxo Paperclip.
+- A tentativa de `git push` falhou por autenticacao do ambiente GitHub: `could not read Username for 'https://github.com': No such device or address`.
 
 ## Git
 
 - Branch local: `pri-99-pesquisa-diaria-ia-2026-07-21`
 - Repositorio: `https://github.com/edurolim/cliente-edurolim`
-- Commit local do pacote: `PENDENTE`
-- Push remoto: `PENDENTE`
+- Commit local do pacote: `17eaf6691d837fe7f161c4f8e04aef9b4ebd3283`
+- Push remoto: `BLOQUEADO POR AUTENTICACAO`
